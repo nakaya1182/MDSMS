@@ -102,6 +102,20 @@
 
 			</tr>
 		</thead>
+		<<tbody>
+			<tr th:each="user : ${page}" th:object="${user}">
+				<td class="center" th:text="*{employee_number}"></td>
+				<td th:text="*{name}"></td>
+				<td th:text="*{birthday}"></td>
+				<td th:text="*{sex}"></td>
+				<td th:text="*{mail_address}"></td>
+				<td th:text="*{address}"></td>
+				<td th:text="*{tel}"></td>
+				<td bgcolor="999999"><a th:href="@{/{No}/Edit(No=*{No})}">編集</a></td>
+				<td bgcolor="999999"><a th:href="@{/{No}/Delete(No=*{No})}">削除</a></td>
+
+			</tr>
+		</tbody>
 
 	</table>
 
