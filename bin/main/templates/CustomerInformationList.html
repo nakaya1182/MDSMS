@@ -7,11 +7,17 @@
 <title>製造部売上管理システム：顧客一覧</title>
 </head>
 <body>
-<div style="background: #000066; width:630px; border: 1px solid #D3D3D3; height:100％; padding-left:10px; padding-right:10px; padding-top:10px; padding-bottom:10px;">
-
-<font color="#FFFFFF">MENU案件一覧顧客一覧ステータス一覧ユーザ一覧ログアウト
-</font>
-</div>
+	<div
+		style="margin-top: -10px; background: #000066; width: 100%; border: 1px solid #D3D3D3; height: 100％; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px;">
+		<font color="#FFFF00">
+		MENU
+		</font>
+		<a th:href="@{/}"><button type="submit"  style="border:1px solid #000066;background-color:#000066; height:50px" ><font color="#FFFFFF">案件一覧</font></button></a>
+		<a th:href="@{/}"><button type="submit"  style="border:1px solid #000066;background-color:#000066; height:50px" ><font color="#808080">顧客一覧</font></button></a>
+		<a th:href="@{/}"><button type="submit"  style="border:1px solid #000066;background-color:#000066; height:50px" ><font color="#FFFFFF">ステータス一覧</font></button></a>
+		<a th:href="@{/}"><button type="submit"  style="border:1px solid #000066;background-color:#000066; height:50px" ><font color="#FFFFFF">ユーザ一覧</font></button></a>
+		<a th:href="@{/}" style="float:right;"><button type="submit"  style="border:1px solid #000066;background-color:#000066; height:50px" ><font color="#FF0000">ログアウト</font></button></a>
+	</div>
 	<b>製造部売上管理システム：顧客一覧</b>
 
 </body>
