@@ -5,6 +5,7 @@
 <title>ユーザ一覧</title>
 </head>
 <body>
+
 	<div
 		style="margin-top: -10px; background: #000066; width: 100%; border: 1px solid #D3D3D3; height: 100％; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px;">
 		<font color="#FFFF00">
@@ -16,5 +17,31 @@
 		<a th:href="@{/}"><button type="submit"  style="border:1px solid #000066;background-color:#000066; height:50px" ><font color="#808080">ユーザ一覧</font></button></a>
 		<a th:href="@{/}" style="float:right;"><button type="submit"  style="border:1px solid #000066;background-color:#000066; height:50px" ><font color="#FF0000">ログアウト</font></button></a>
 	</div>
+
+
+
+	<b>製造部売上管理システム：ユーザ一覧</b>
+
+	<input type="button" th:onclick="location.href='/SignUp'" value="新規登録">
+
+	<table border="1">
+		<thead>
+			<tr height=40 bgcolor=cornflowerblue>
+				<th>社員番号</th>
+				<th>氏名</th>
+				<th>生年月日</th>
+				<th>性別</th>
+				<th>メールアドレス</th>
+				<th>住所</th>
+				<th>電話番号</th>
+				<th colspan="2"></th>
+
+			</tr>
+		</thead>
+
+	</table>
+
+
+
 </body>
 </html>
