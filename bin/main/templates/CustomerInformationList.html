@@ -4,7 +4,7 @@
 <head>
 <meta name="viewport" charset='utf-8'
 	content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
-<title>製造部売上管理システム：顧客一覧</title>
+<title>顧客一覧</title>
 </head>
 <body>
 	<div
@@ -20,6 +20,128 @@
 	</div>
 	<br>
 	<b>製造部売上管理システム：顧客一覧</b>
+	<br><br>
+	<a th:href="@{/signUp}">
+		<button type="submit">新規登録</button>
+	</a>
+	<div th:fragment='paginationbar'>
+            <ul th:object="${searchWord}">
+                <li th:class="${page.first} ? 'disabled':''" style="display:inline">
+                    <span th:if="${page.first}">&lt&lt</span>
+                    <a th:if="${not page.first}" th:href="@{${url}(page=0,searchWord=${searchWord})}">&lt&lt</a>
+                </li>
+
+				<li th:class="(${page.number})? 'active' : ''" style="display:inline">
+					<span th:if="${page.first}">&lt</span>
+					<a th:if="${not page.first}" th:href="@{${url}(page=(${page.number}-1),searchWord=${searchWord})}">&lt</a>
+				</li>
+
+				<li  th:if="${page.totalPages <= 4}" th:each='i : ${#numbers.sequence(0, page.totalPages - 1)}' th:class="(${i}==${page.number})? 'active' : ''" style="display:inline">
+                    <span th:if='${i}==${page.number}' th:text='${i+1}'>1</span>
+                    <a th:if='${i}!=${page.number}' th:href="@{${url}(page=${i},searchWord=${searchWord})}">
+                        <span th:text='${i+1}'>1</span>
+                    </a>
+                </li>
+
+                <li  th:if="${page.totalPages > 4 && page.number <= 1}" th:each='i : ${#numbers.sequence(0, 4)}' th:class="(${i}==${page.number})? 'active' : ''" style="display:inline">
+                    <span th:if='${i}==${page.number}' th:text='${i+1}'>1</span>
+                    <a th:if='${i}!=${page.number}' th:href="@{${url}(page=${i},searchWord=${searchWord})}">
+                        <span th:text='${i+1}'>1</span>
+                    </a>
+                </li>
+                <li th:if="${page.totalPages > 4 && 2 <= page.number && page.number <= page.totalPages-3 }" th:each='i : ${#numbers.sequence(page.number-2, page.number+2)}' th:class="(${i}==${page.number})? 'active' : ''" style="display:inline">
+                    <span th:if='${i}==${page.number}' th:text='${i+1}'>1</span>
+                    <a th:if='${i}!=${page.number}' th:href="@{${url}(page=${i},searchWord=${searchWord})}">
+                        <span th:text='${i+1}'>1</span>
+                    </a>
+                </li>
+                <li th:if="${page.totalPages > 4 && (page.last || page.number == page.totalPages-2)}" th:each='i : ${#numbers.sequence(page.totalPages-5, page.totalPages-1)}' th:class="(${i}==${page.number})? 'active' : ''" style="display:inline">
+                    <span th:if='${i}==${page.number}' th:text='${i+1}'>1</span>
+                    <a th:if='${i}!=${page.number}' th:href="@{${url}(page=${i},searchWord=${searchWord})}">
+                        <span th:text='${i+1}'>1</span>
+                    </a>
+                </li>
+
+                <li th:class="(${page.number})? 'active' : ''" style="display:inline">
+					<span th:if="${page.last}">&gt</span>
+					<a th:if="${not page.last}" th:href="@{${url}(page=(${page.number}+1),searchWord=${searchWord})}">&gt</a>
+				</li>
+
+                <li th:class="${page.last} ? 'disabled':''" style="display:inline">
+                    <span th:if="${page.last}">&gt&gt</span>
+                    <a th:if="${not page.last}" th:href="@{${url}(page=(${page.totalPages}-1),searchWord=${searchWord})}">&gt&gt</a>
+                </li>
+            </ul>
+	</div>
+
+	<table border=1>
+		<thead>
+			<tr  height=40 bgcolor=cornflowerblue>
+				<th width=5% >No.</th>
+				<th width=10% >顧客</th>
+				<th width=10% >業種</th>
+				<th width=10% >代表者</th>
+				<th width=35% >住所</th>
+				<th width=10% >電話番号</th>
+				<th width=10% >FAX番号</th>
+				<th width=10% ></th>
+			</tr>
+		</thead>
+	</table>
+
+	<div th:fragment='paginationbar'>
+            <ul th:object="${searchWord}">
+                <li th:class="${page.first} ? 'disabled':''" style="display:inline">
+                    <span th:if="${page.first}">&lt&lt</span>
+                    <a th:if="${not page.first}" th:href="@{${url}(page=0,searchWord=${searchWord})}">&lt&lt</a>
+                </li>
+
+				<li th:class="(${page.number})? 'active' : ''" style="display:inline">
+					<span th:if="${page.first}">&lt</span>
+					<a th:if="${not page.first}" th:href="@{${url}(page=(${page.number}-1),searchWord=${searchWord})}">&lt</a>
+				</li>
+
+				<li  th:if="${page.totalPages <= 4}" th:each='i : ${#numbers.sequence(0, page.totalPages - 1)}' th:class="(${i}==${page.number})? 'active' : ''" style="display:inline">
+                    <span th:if='${i}==${page.number}' th:text='${i+1}'>1</span>
+                    <a th:if='${i}!=${page.number}' th:href="@{${url}(page=${i},searchWord=${searchWord})}">
+                        <span th:text='${i+1}'>1</span>
+                    </a>
+                </li>
+
+                <li  th:if="${page.totalPages > 4 && page.number <= 1}" th:each='i : ${#numbers.sequence(0, 4)}' th:class="(${i}==${page.number})? 'active' : ''" style="display:inline">
+                    <span th:if='${i}==${page.number}' th:text='${i+1}'>1</span>
+                    <a th:if='${i}!=${page.number}' th:href="@{${url}(page=${i},searchWord=${searchWord})}">
+                        <span th:text='${i+1}'>1</span>
+                    </a>
+                </li>
+                <li th:if="${page.totalPages > 4 && 2 <= page.number && page.number <= page.totalPages-3 }" th:each='i : ${#numbers.sequence(page.number-2, page.number+2)}' th:class="(${i}==${page.number})? 'active' : ''" style="display:inline">
+                    <span th:if='${i}==${page.number}' th:text='${i+1}'>1</span>
+                    <a th:if='${i}!=${page.number}' th:href="@{${url}(page=${i},searchWord=${searchWord})}">
+                        <span th:text='${i+1}'>1</span>
+                    </a>
+                </li>
+                <li th:if="${page.totalPages > 4 && (page.last || page.number == page.totalPages-2)}" th:each='i : ${#numbers.sequence(page.totalPages-5, page.totalPages-1)}' th:class="(${i}==${page.number})? 'active' : ''" style="display:inline">
+                    <span th:if='${i}==${page.number}' th:text='${i+1}'>1</span>
+                    <a th:if='${i}!=${page.number}' th:href="@{${url}(page=${i},searchWord=${searchWord})}">
+                        <span th:text='${i+1}'>1</span>
+                    </a>
+                </li>
+
+                <li th:class="(${page.number})? 'active' : ''" style="display:inline">
+					<span th:if="${page.last}">&gt</span>
+					<a th:if="${not page.last}" th:href="@{${url}(page=(${page.number}+1),searchWord=${searchWord})}">&gt</a>
+				</li>
+
+                <li th:class="${page.last} ? 'disabled':''" style="display:inline">
+                    <span th:if="${page.last}">&gt&gt</span>
+                    <a th:if="${not page.last}" th:href="@{${url}(page=(${page.totalPages}-1),searchWord=${searchWord})}">&gt&gt</a>
+                </li>
+            </ul>
+	</div>
+
+	<a th:href="@{/signUp}">
+		<button type="submit">新規登録</button>
+	</a>
 
 </body>
 </html>
