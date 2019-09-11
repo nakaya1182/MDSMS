@@ -7,4 +7,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface CustomerInformationRepository extends PagingAndSortingRepository<CustomerInformationEntity, String>{
 	Page<CustomerInformationEntity> findAll(Pageable pageable);
+
+	CustomerInformationEntity findById(Integer id);
 }

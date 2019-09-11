@@ -13,7 +13,7 @@
 		MENU
 		</font>
 		<a th:href="@{/}"><button type="submit"  style="border:1px solid #000066;background-color:#000066; height:50px" ><font color="#FFFFFF">案件一覧</font></button></a>
-		<a th:href="@{/}"><button type="submit"  style="border:1px solid #000066;background-color:#000066; height:50px" ><font color="#808080">顧客一覧</font></button></a>
+		<font color="#808080" size="2">顧客一覧</font>
 		<a th:href="@{/}"><button type="submit"  style="border:1px solid #000066;background-color:#000066; height:50px" ><font color="#FFFFFF">ステータス一覧</font></button></a>
 		<a th:href="@{/}"><button type="submit"  style="border:1px solid #000066;background-color:#000066; height:50px" ><font color="#FFFFFF">ユーザ一覧</font></button></a>
 		<a th:href="@{/}" style="float:right;"><button type="submit"  style="border:1px solid #000066;background-color:#000066; height:50px" ><font color="#FF0000">ログアウト</font></button></a>
@@ -21,7 +21,7 @@
 	<br>
 	<b>製造部売上管理システム：顧客一覧</b>
 	<br><br>
-	<a th:href="@{/signUp}">
+	<a th:href="@{/CustomerInformationRegistration}">
 		<button type="submit"style="border:1px solid #000066;background-color:#000066; height:100%" ><font color="#FFFFFF">新規登録</font></button>
 	</a>
 	<div th:fragment='paginationbar'>
@@ -96,7 +96,7 @@
 			    <td th:text="*{representative}"></td>
 			    <td th:text="*{address}"></td>
 			    <td th:text="*{tel}"></td>
-			    <td th:text="*{fax_number}"></td>
+			    <td th:text="*{faxNumber}"></td>
 			    <td><a th:href="@{/CustomerInformationEdit/{id}(id=*{id})}"><button type="submit"  style="border:1px solid #000066;background-color:#000066; height:100%" ><font color="#FFFFFF">編集</font></button></a></td>
 			    <td><a th:href="@{/CustomerInformationDelete/{id}(id=*{id})}"><button type="submit"  style="border:1px solid #000066;background-color:#000066; height:100%" ><font color="#FF0000">削除</font></button></a></td>
 		   </tr>
@@ -153,7 +153,7 @@
             </ul>
 	</div>
 
-	<a th:href="@{/signUp}">
+	<a th:href="@{/CustomerInformationRegistration}">
 		<button type="submit"style="border:1px solid #000066;background-color:#000066; height:100%" ><font color="#FFFFFF">新規登録</font></button>
 	</a>
 

@@ -1,11 +1,55 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
-<title>顧客情報編集確認</title>
+<meta name="viewport" content="width=width=960,initial-scale=1"
+	charset="UTF-8">
+<title>顧客編集確認</title>
 </head>
-<body><<<<<<< HEAD 勉強 ======= りんご→ごりら→ラッパ ======= モンハン倶楽部入会したい
-	力が欲しいか？ >>>>>>> branch 'master' of
-	https://github.com/nakaya1182/MDSMS.git
+<body>
+	<br>
+	<b>製造部売上管理システム：顧客編集確認</b>
+	<br>
+	<br>
+	<table th:object="${customerInformationEntity}">
+		<tr>
+			<td align="right">顧客:</td>
+			<td th:text="*{customerName}"></td>
+		</tr>
+		<tr>
+			<td align="right">業種:</td>
+			<td th:text="*{industry}"></td>
+		</tr>
+		<tr>
+			<td align="right">代表者:</td>
+			<td th:text="*{representative}"></td>
+		</tr>
+		<tr>
+			<td align="right">住所:</td>
+			<td th:text="*{address}"></td>
+		</tr>
+		<tr>
+			<td align="right">電話番号:</td>
+			<td th:text="*{tel}"></td>
+		</tr>
+		<tr>
+			<td align="right">FAX番号:</td>
+			<td th:text="*{faxNumber}"></td>
+		</tr>
+	</table>
+	<form method="post" th:action="@{/CustomerInsert}" th:object="${customerInformationEntity}">
+		<input type="hidden" name="id" th:value="*{id}">
+		<input type="hidden" name="customerName" th:value="*{customerName}">
+		<input type="hidden" name="industry" th:value="*{industry}"> <input
+			type="hidden" name="representative" th:value="*{representative}">
+		<input type="hidden" name="address" th:value="*{address}"> <input
+			type="hidden" name="tel" th:value="*{tel}"> <input
+			type="hidden" name="faxNumber" th:value="*{faxNumber}"> <input
+			type="submit" value="編集">
+	</form>
+
+	<a th:href="@{/CustomerInformationEdit/{id}(id=*{id})}" th:object="${customerInformationEntity}">
+		<button type="submit">戻る</button>
+	</a>
 </body>
 </html>
