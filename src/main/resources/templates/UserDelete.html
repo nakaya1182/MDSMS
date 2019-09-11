@@ -1,10 +1,62 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>ユーザ削除</title>
 </head>
 <body>
+<b style="position: relative; left: 50px; top: 5px">製造部売上管理システム：ユーザ削除</b>
+	<br>
+	<br>
+	<div th:object="${userEntity}">
 
+		<table>
+			<tr>
+				<td>社員番号：</td>
+				<td th:text="*{employee_number}"></td>
+			</tr>
+			<tr>
+				<td>氏名：</td>
+				<td th:text="*{name}"></td>
+			</tr>
+			<tr>
+				<td>生年月日：</td>
+				<td th:text="*{birthday}"></td>
+			</tr>
+			<tr>
+				<td>性別：</td>
+				<td th:text="*{sex}"></td>
+			</tr>
+			<tr>
+				<td>メールアドレス：</td>
+				<td th:text="*{mail_address}"></td>
+			</tr>
+			<tr>
+				<td>住所：</td>
+				<td th:text="*{address}"></td>
+			</tr>
+			<tr>
+				<td>電話番号：</td>
+				<td th:text="*{tel}"></td>
+			</tr>
+		</table>
+
+
+		<div>
+			<form th:action="@{/UD{employee_number}(employee_number=*{employee_number})}" th:object="${userEntity}" th:method="post">
+				<input type=hidden name="employee_number" th:value="*{employee_number}">
+				<input type=hidden name="name" th:value="*{name}">
+				<input type=hidden name="birthday" th:value="*{birthday}">
+				<input type=hidden name="sex" th:value="*{sex}">
+				<input type=hidden name="mail_address" th:value="*{mail_address}">
+				<input type=hidden name="address" th:value="*{address}">
+				<input type=hidden name="tel" th:value="*{tel}">
+				<input type=hidden name="flag" th:value="1">
+				<input type="submit" style="width: 100px" value="削除" class="btn">
+				<input type="button" onclick="location.href='/addback'" value="もどる">
+			</form>
+		</div>
+	</div>
 </body>
 </html>

@@ -18,4 +18,16 @@ public class UserService {
 	public Page<UserEntity> selectAll(Pageable pageable) {
 		return userRepository.findAll(pageable);
 }
+	public void create(UserEntity userEntity) {
+		userRepository.save(userEntity);
+	}
+	public UserEntity findById(Integer employee_number) {
+		return userRepository.findById(employee_number).get();
+	}
+	public void editUpdate(UserEntity userEntity) {
+		userRepository.save(userEntity);
+	}
+	public void deleteUpdate(UserEntity userEntity) {
+		userRepository.save(userEntity);
+	}
 }

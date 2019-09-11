@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>ユーザ一覧</title>
@@ -14,7 +15,7 @@
 		<a th:href="@{/}"><button type="submit"  style="border:1px solid #000066;background-color:#000066; height:50px" ><font color="#FFFFFF">案件一覧</font></button></a>
 		<a th:href="@{/}"><button type="submit"  style="border:1px solid #000066;background-color:#000066; height:50px" ><font color="#FFFFFF">顧客一覧</font></button></a>
 		<a th:href="@{/}"><button type="submit"  style="border:1px solid #000066;background-color:#000066; height:50px" ><font color="#FFFFFF">ステータス一覧</font></button></a>
-		<button type="submit"  style="border:1px solid #000066;background-color:#000066; height:50px" ><font color="#808080">ユーザ一覧</font></button></a>
+		<button type="submit"  style="border:1px solid #000066;background-color:#000066; height:50px" ><font color="#808080">ユーザ一覧</font></button>
 		<a th:href="@{/}" style="float:right;"><button type="submit"  style="border:1px solid #000066;background-color:#000066; height:50px" ><font color="#FF0000">ログアウト</font></button></a>
 	</div>
 
@@ -22,7 +23,8 @@
 
 	<b>製造部売上管理システム：ユーザ一覧</b>
 <br>
-	<input type="button" th:onclick="location.href='/SignUp'" value="新規登録">
+<br>
+	<input type="button" th:onclick="location.href='/UserRegistration'" value="新規登録">
 <div th:fragment='paginationbar' th:if="!${#lists.isEmpty(page)}">
 		<ul th:object="${Search}">
 
@@ -102,7 +104,7 @@
 
 			</tr>
 		</thead>
-		<<tbody>
+		<tbody>
 			<tr th:each="user : ${page}" th:object="${user}">
 				<td class="center" th:text="*{employee_number}"></td>
 				<td th:text="*{name}"></td>
@@ -111,8 +113,8 @@
 				<td th:text="*{mail_address}"></td>
 				<td th:text="*{address}"></td>
 				<td th:text="*{tel}"></td>
-				<td bgcolor="999999"><a th:href="@{/}">編集</a></td>
-				<td bgcolor="999999"><a th:href="@{/}">削除</a></td>
+				<td bgcolor="999999"><a th:href="@{/{employee_number}/UserEdit(employee_number=*{employee_number})}">編集</a></td>
+				<td bgcolor="999999"><a th:href="@{/{employee_number}/UserDelete(employee_number=*{employee_number})}">削除</a></td>
 
 			</tr>
 		</tbody>

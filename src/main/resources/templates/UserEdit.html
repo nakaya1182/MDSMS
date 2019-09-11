@@ -1,10 +1,50 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>ユーザ編集</title>
 </head>
 <body>
+<div class="container">
+		<b style="position: relative; left: 50px; top: 5px">製造部売上管理システム：ユーザ編集</b>
 
+		<br> <br>
+		<form th:action="@{/{employee_number}/UserEditConfirmation(employee_number=*{employee_number})}"
+			th:object="${userEntity}" th:method="post">
+			<div>
+				<label style="position: relative; left: 48px;">社員番号：</label> <label style="position: relative; left: 48px;"
+					th:text="*{employee_number}" ></label>
+			</div>
+			<div>
+				<label style="position: relative; left: 80px;">氏名：</label> <input style="position: relative; left: 80px;" type="text" name="name"
+					th:value="*{name}" />
+			</div>
+			<div>
+				<label style="position: relative; left: 48px;">生年月日：</label> <input style="position: relative; left: 48px;" type="text" name="birthday"
+					th:value="*{birthday}" />
+			</div>
+			<div>
+				<label style="position: relative; left: 80px;">性別：</label> <input style="position: relative; left: 80px;" type="text" name="sex"
+					th:value="*{sex}" />
+			</div>
+			<div>
+				<label style="position: relative; left: 0px;">メールアドレス：</label> <input type="text" name="mail_address"
+					th:value="*{mail_address}" />
+			</div>
+			<div>
+				<label style="position: relative; left: 80px;">住所：</label> <input style="position: relative; left: 80px;" type="text" name="address"
+					th:value="*{address}" />
+			</div>
+			<div>
+				<label style="position: relative; left: 48px;">電話番号：</label> <input style="position: relative; left: 48px;" type="text" name="tel"
+					th:value="*{tel}" />
+			</div>
+			<br>
+			<input style="position: relative; left: 70px; width: 100px"  type="submit" value="確認"> <input style="position: relative; left: 90px; width: 100px" type="button"
+				onclick="location.href='/ADDback'" value="もどる">
+		</form>
+
+	</div>
 </body>
 </html>
