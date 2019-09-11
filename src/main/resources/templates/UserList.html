@@ -23,7 +23,71 @@
 	<b>製造部売上管理システム：ユーザ一覧</b>
 <br>
 	<input type="button" th:onclick="location.href='/SignUp'" value="新規登録">
+<div th:fragment='paginationbar' th:if="!${#lists.isEmpty(page)}">
+		<ul th:object="${Search}">
 
+
+			<li th:class="${page.first} ? 'disabled':''" style="display: inline">
+				<span th:if="${page.first}">&lt&lt</span> <a
+				th:if="${not page.first}"
+				th:href="@{${url}(page=0,Search=${Search})}">&lt&lt</a>
+			</li>
+
+
+			<li th:class="(${page.number})? 'active' : ''"
+				style="display: inline"><span th:if="${page.first}">&lt</span>
+				<a th:if="${not page.first}"
+				th:href="@{${url}(page=(${page.number}-1),Search=${Search})}">&lt</a></li>
+
+			<li th:if="${page.totalPages <= 4}"
+				th:each='i : ${#numbers.sequence(0, page.totalPages-1)}'
+				th:class="(${i}==${page.number})? 'active' : ''"
+				style="display: inline"><span th:if='${i}==${page.number}'
+				th:text='${i+1}'>1</span> <a th:if='${i}!=${page.number}'
+				th:href="@{${url}(page=${i},Search=${Search})}"> <span
+					th:text='${i+1}'>1</span>
+			</a></li>
+
+			<li th:if="${page.totalPages >= 5 && page.number <= 1}"
+				th:each='i : ${#numbers.sequence(0, 4)}'
+				th:class="(${i}==${page.number})? 'active' : ''"
+				style="display: inline"><span th:if='${i}==${page.number}'
+				th:text='${i+1}'>1</span> <a th:if='${i}!=${page.number}'
+				th:href="@{${url}(page=${i},Search=${Search})}"> <span
+					th:text='${i+1}'>1</span>
+			</a></li>
+
+			<li
+				th:if="${page.totalPages >= 5 && page.number > 1 && page.number < page.totalPages-2}"
+				th:each='i : ${#numbers.sequence(page.number-2, page.number+2)}'
+				th:class="(${i}==${page.number})? 'active' : ''"
+				style="display: inline"><span th:if='${i}==${page.number}'
+				th:text='${i+1}'>1</span> <a th:if='${i}!=${page.number}'
+				th:href="@{${url}(page=${i},Search=${Search})}"> <span
+					th:text='${i+1}'>1</span>
+			</a></li>
+
+			<li
+				th:if="${page.totalPages >= 5 && page.number >= page.totalPages-2}"
+				th:each='i : ${#numbers.sequence(page.totalPages-5,page.totalPages-1)}'
+				th:class="(${i}==${page.number})? 'active' : ''"
+				style="display: inline"><span th:if='${i}==${page.number}'
+				th:text='${i+1}'>1</span> <a th:if='${i}!=${page.number}'
+				th:href="@{${url}(page=${i},Search=${Search})}"> <span
+					th:text='${i+1}'>1</span>
+			</a></li>
+
+			<li th:class="(${page.number})? 'active' : ''"
+				style="display: inline"><span th:if="${page.last}">&gt</span> <a
+				th:if="${not page.last}"
+				th:href="@{${url}(page=(${page.number}+1),Search=${Search})}">&gt</a></li>
+
+			<li th:class="${page.last} ? 'disabled':''" style="display: inline">
+				<span th:if="${page.last}">&gt&gt</span> <a th:if="${not page.last}"
+				th:href="@{${url}(page=(${page.totalPages}-1),Search=${Search})}">&gt&gt</a>
+			</li>
+		</ul>
+	</div>
 	<table border="1">
 		<thead>
 			<tr height=40 bgcolor=cornflowerblue>
@@ -38,10 +102,88 @@
 
 			</tr>
 		</thead>
+		<<tbody>
+			<tr th:each="user : ${page}" th:object="${user}">
+				<td class="center" th:text="*{employee_number}"></td>
+				<td th:text="*{name}"></td>
+				<td th:text="*{birthday}"></td>
+				<td th:text="*{sex}"></td>
+				<td th:text="*{mail_address}"></td>
+				<td th:text="*{address}"></td>
+				<td th:text="*{tel}"></td>
+				<td bgcolor="999999"><a th:href="@{/}">編集</a></td>
+				<td bgcolor="999999"><a th:href="@{/}">削除</a></td>
+
+			</tr>
+		</tbody>
 
 	</table>
 
+<div th:fragment='paginationbar' th:if="!${#lists.isEmpty(page)}">
+		<ul th:object="${Search}">
 
+
+			<li th:class="${page.first} ? 'disabled':''" style="display: inline">
+				<span th:if="${page.first}">&lt&lt</span> <a
+				th:if="${not page.first}"
+				th:href="@{${url}(page=0,Search=${Search})}">&lt&lt</a>
+			</li>
+
+
+			<li th:class="(${page.number})? 'active' : ''"
+				style="display: inline"><span th:if="${page.first}">&lt</span>
+				<a th:if="${not page.first}"
+				th:href="@{${url}(page=(${page.number}-1),Search=${Search})}">&lt</a></li>
+
+			<li th:if="${page.totalPages <= 4}"
+				th:each='i : ${#numbers.sequence(0, page.totalPages-1)}'
+				th:class="(${i}==${page.number})? 'active' : ''"
+				style="display: inline"><span th:if='${i}==${page.number}'
+				th:text='${i+1}'>1</span> <a th:if='${i}!=${page.number}'
+				th:href="@{${url}(page=${i},Search=${Search})}"> <span
+					th:text='${i+1}'>1</span>
+			</a></li>
+
+			<li th:if="${page.totalPages >= 5 && page.number <= 1}"
+				th:each='i : ${#numbers.sequence(0, 4)}'
+				th:class="(${i}==${page.number})? 'active' : ''"
+				style="display: inline"><span th:if='${i}==${page.number}'
+				th:text='${i+1}'>1</span> <a th:if='${i}!=${page.number}'
+				th:href="@{${url}(page=${i},Search=${Search})}"> <span
+					th:text='${i+1}'>1</span>
+			</a></li>
+
+			<li
+				th:if="${page.totalPages >= 5 && page.number > 1 && page.number < page.totalPages-2}"
+				th:each='i : ${#numbers.sequence(page.number-2, page.number+2)}'
+				th:class="(${i}==${page.number})? 'active' : ''"
+				style="display: inline"><span th:if='${i}==${page.number}'
+				th:text='${i+1}'>1</span> <a th:if='${i}!=${page.number}'
+				th:href="@{${url}(page=${i},Search=${Search})}"> <span
+					th:text='${i+1}'>1</span>
+			</a></li>
+
+			<li
+				th:if="${page.totalPages >= 5 && page.number >= page.totalPages-2}"
+				th:each='i : ${#numbers.sequence(page.totalPages-5,page.totalPages-1)}'
+				th:class="(${i}==${page.number})? 'active' : ''"
+				style="display: inline"><span th:if='${i}==${page.number}'
+				th:text='${i+1}'>1</span> <a th:if='${i}!=${page.number}'
+				th:href="@{${url}(page=${i},Search=${Search})}"> <span
+					th:text='${i+1}'>1</span>
+			</a></li>
+
+			<li th:class="(${page.number})? 'active' : ''"
+				style="display: inline"><span th:if="${page.last}">&gt</span> <a
+				th:if="${not page.last}"
+				th:href="@{${url}(page=(${page.number}+1),Search=${Search})}">&gt</a></li>
+
+			<li th:class="${page.last} ? 'disabled':''" style="display: inline">
+				<span th:if="${page.last}">&gt&gt</span> <a th:if="${not page.last}"
+				th:href="@{${url}(page=(${page.totalPages}-1),Search=${Search})}">&gt&gt</a>
+			</li>
+		</ul>
+	</div>
 
 </body>
 </html>
