@@ -22,7 +22,7 @@
 	<b>製造部売上管理システム：顧客一覧</b>
 	<br><br>
 	<a th:href="@{/signUp}">
-		<button type="submit">新規登録</button>
+		<button type="submit"style="border:1px solid #000066;background-color:#000066; height:100%" ><font color="#FFFFFF">新規登録</font></button>
 	</a>
 	<div th:fragment='paginationbar'>
             <ul th:object="${searchWord}">
@@ -84,9 +84,23 @@
 				<th width=35% >住所</th>
 				<th width=10% >電話番号</th>
 				<th width=10% >FAX番号</th>
-				<th width=10% ></th>
+				<th width=5% ></th>
+				<th width=5% ></th>
 			</tr>
 		</thead>
+		<tbody>
+		   <tr th:each="user:${page}" th:object="${user}">
+				<td th:text="*{id}"></td>
+			    <td th:text="*{customerName}"></td>
+			    <td th:text="*{industry}"></td>
+			    <td th:text="*{representative}"></td>
+			    <td th:text="*{address}"></td>
+			    <td th:text="*{tel}"></td>
+			    <td th:text="*{fax_number}"></td>
+			    <td><a th:href="@{/CustomerInformationEdit/{id}(id=*{id})}"><button type="submit"  style="border:1px solid #000066;background-color:#000066; height:100%" ><font color="#FFFFFF">編集</font></button></a></td>
+			    <td><a th:href="@{/CustomerInformationDelete/{id}(id=*{id})}"><button type="submit"  style="border:1px solid #000066;background-color:#000066; height:100%" ><font color="#FF0000">削除</font></button></a></td>
+		   </tr>
+		</tbody>
 	</table>
 
 	<div th:fragment='paginationbar'>
@@ -140,7 +154,7 @@
 	</div>
 
 	<a th:href="@{/signUp}">
-		<button type="submit">新規登録</button>
+		<button type="submit"style="border:1px solid #000066;background-color:#000066; height:100%" ><font color="#FFFFFF">新規登録</font></button>
 	</a>
 
 </body>
