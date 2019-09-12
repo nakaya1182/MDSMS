@@ -20,7 +20,7 @@ public class CustomerInformationController {
 	//一覧表示
 	@GetMapping("CustomerInformationList")
 	public String setList(Model model, @PageableDefault(page = 0, size = 10)Pageable pageable) {
-		Page<CustomerInformationEntity> page=customerInformationService.getList(pageable);
+		Page<CustomerInformationEntity> page=customerInformationService.findAll(pageable);
 		model.addAttribute("page", page);
 	    return "CustomerInformationList";
 	}
