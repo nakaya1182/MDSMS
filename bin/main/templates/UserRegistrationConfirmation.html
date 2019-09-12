@@ -1,10 +1,67 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>ユーザ登録確認</title>
 </head>
 <body>
+<b style="position: relative; left: 50px; top: 5px">製造部売上管理システム：ユーザ登録</b>
+	<br>
+	<br>
+	<div th:object="${userEntity}">
 
+
+		<table>
+			<tr>
+				<td align="right">社員番号：</td>
+				<td th:text="*{employee_number}"></td>
+			</tr>
+			<tr>
+				<td align="right">氏名：</td>
+				<td th:text="*{name}"></td>
+			</tr>
+			<tr>
+				<td align="right">生年月日：</td>
+				<td th:text="*{birthday}"></td>
+			</tr>
+			<tr>
+				<td align="right">性別：</td>
+				<td th:text="*{sex}"></td>
+			</tr>
+			<tr>
+				<td align="right">メールアドレス：</td>
+				<td th:text="*{mail_address}"></td>
+			</tr>
+			<tr>
+				<td align="right">住 所 ：</td>
+				<td th:text="*{address}"></td>
+			</tr>
+			<tr>
+				<td align="right">電話番号：</td>
+				<td th:text="*{tel}"></td>
+			</tr>
+			<tr>
+				<td align="right">パスワード：</td>
+				<td th:text="*{password}"></td>
+			</tr>
+		</table>
+
+	</div>
+
+
+	<form th:action="@{/UserList}" th:object="${userEntity}" th:method="post">
+		<input type=hidden name="employee_number" th:value="*{employee_number}">
+		<input type=hidden name="name" th:value="*{name}">
+		<input type=hidden name="birthday" th:value="*{birthday}">
+		<input type=hidden name="sex" th:value="*{sex}">
+		<input type=hidden name="mail_address" th:value="*{mail_address}">
+		<input type=hidden name="address" th:value="*{address}">
+		<input type=hidden name="tel" th:value="*{tel}">
+		<input type=hidden name="flag" th:value="0">
+		<input type=hidden name="password" th:value="*{password}">
+		<input type="submit" style="width: 100px" value="登録" class="btn">
+		<input type="button" onclick="location.href='/UserRegistration'" value="もどる">
+	</form>
 </body>
 </html>
