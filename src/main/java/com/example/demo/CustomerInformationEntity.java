@@ -31,7 +31,7 @@ public class CustomerInformationEntity {
 	@Column(name="tel")
 	private String 	tel;
 	@Column(name="	fax_number")
-	private String 	fax_number;
+	private String 	faxNumber;
 	@Column(name="flag")
 	private Integer flag=0;
 }
