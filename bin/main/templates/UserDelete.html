@@ -40,6 +40,10 @@
 				<td>電話番号：</td>
 				<td th:text="*{tel}"></td>
 			</tr>
+			<tr>
+				<td>パスワード：</td>
+				<td th:text="*{password}"></td>
+			</tr>
 		</table>
 
 
@@ -53,6 +57,7 @@
 				<input type=hidden name="address" th:value="*{address}">
 				<input type=hidden name="tel" th:value="*{tel}">
 				<input type=hidden name="flag" th:value="1">
+				<input type=hidden name="password" th:value="*{password}">
 				<input type="submit" style="width: 100px" value="削除" class="btn">
 				<input type="button" onclick="location.href='/addback'" value="もどる">
 			</form>

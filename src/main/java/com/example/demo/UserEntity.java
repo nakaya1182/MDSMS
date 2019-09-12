@@ -40,6 +40,9 @@ public class UserEntity {
 	@Column(name="flag")
 	private String flag;
 
+	@Column(name="password")
+	private String password;
+
 	public Integer getId() {
 		return employee_number;
 	}
