@@ -99,4 +99,8 @@ public class UserController {
 		userService.deleteUpdate(userEntity);
 		return "redirect:UserList";
 	}
+	@GetMapping("/addback")
+	public String addBack(Model model) {
+		return "redirect:UserList";
+	}
 }
