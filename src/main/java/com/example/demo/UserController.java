@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-
+/**@RequestMapping("login")*/
 @Controller
 public class UserController {
 
@@ -103,4 +103,13 @@ public class UserController {
 	public String addBack(Model model) {
 		return "redirect:UserList";
 	}
+	/**
+	 * ログイン承認
+	 */
+	    @RequestMapping(value="")
+	    String loginForm() {
+	        return "LogIn";
+	    }
+
+
 }

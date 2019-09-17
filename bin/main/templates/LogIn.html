@@ -9,49 +9,24 @@
 
 	<form name="loginForm" method="post" th:action="@{authenticate}">
 
+		<b>製造部売上管理システム：ログイン</b> <br> <br>
+
 		<table>
-
 			<tbody>
-
 				<tr>
-
-					<th colspan="2">ログイン</th>
-
-				</tr>
-
-
-				<tr>
-
-					<th>メールアドレス</th>
-
-
-					<td><input type="text" name="mail_address" maxlength="128"
+					<th>社員番号</th>
+					<td><input type="text" name="employee_number" maxlength="128"
 						size="32"></td>
-
 				</tr>
-
-
 				<tr>
-
 					<th>パスワード</th>
-
-
 					<td><input type="password" name="password" maxlength="128"
 						size="32"></td>
-
 				</tr>
-
-
-				<tr>
-
-					<th colspan="2"><button type="submit">ログイン</button></th>
-
-				</tr>
-
 			</tbody>
-
 		</table>
-
+		<br>
+		<button type="submit">ログイン</button>
 	</form>
 
 </body>

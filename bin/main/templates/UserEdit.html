@@ -25,8 +25,12 @@
 					th:value="*{birthday}" />
 			</div>
 			<div>
-				<label style="position: relative; left: 80px;">性別：</label> <input style="position: relative; left: 80px;" type="text" name="sex"
-					th:value="*{sex}" />
+				<label style="position: relative; left: 80px;">性別：</label>
+			<select name="sex" style="position: relative; left: 80px;">
+			<option th:value="*{sex}"></option>
+			<option value="男">男</option>
+			<option value="女">女</option>
+			</select><br>
 			</div>
 			<div>
 				<label style="position: relative; left: 0px;">メールアドレス：</label> <input type="text" name="mail_address"

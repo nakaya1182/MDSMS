@@ -30,4 +30,5 @@ public class UserService {
 	public void deleteUpdate(UserEntity userEntity) {
 		userRepository.save(userEntity);
 	}
+
 }
