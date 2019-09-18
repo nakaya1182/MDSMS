@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 
+
 @Controller
 public class UserController {
 
@@ -103,4 +104,21 @@ public class UserController {
 	public String addBack(Model model) {
 		return "redirect:UserList";
 	}
+	/**
+	 * 初期画面
+	 */
+	@RequestMapping(value="login")
+	String loginForm() {
+		return "login";
+	}
+
+	@RequestMapping(value="/test")
+	String login() {
+		return "redirect:UserList";
+	}
+	@RequestMapping(value="/logout")
+	String logout() {
+		return "redirect:login";
+	}
+
 }

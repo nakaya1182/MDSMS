@@ -9,7 +9,8 @@ import org.springframework.stereotype.Repository;
 public interface UserRepository  extends JpaRepository<UserEntity, Integer>{
 
 	Page<UserEntity> findAll(Pageable pageable);
-
+	/**UserEntity findByemployee_number(String employee_number);*/
 	Page<UserEntity> findByAddressContaining(Pageable pageable,String Search);
+
 }
 

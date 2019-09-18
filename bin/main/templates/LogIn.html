@@ -7,51 +7,28 @@
 </head>
 <body>
 
-	<form name="loginForm" method="post" th:action="@{authenticate}">
+	<form name="loginForm" method="post" th:action="@{login}">
 
+		<b>製造部売上管理システム：ログイン</b> <br> <br>
+<div th:if="${session['SPRING_SECURITY_LAST_EXCEPTION']} != null">
+		<font color="#FF0000"><b>社員番号かパスワードが間違っています！！！！</b></font>
+	</div><br>
 		<table>
-
 			<tbody>
-
 				<tr>
-
-					<th colspan="2">ログイン</th>
-
+					<th>社員番号</th>
+					<td><input type="text" name="employee_number" maxlength="128" th:value="${employee_number}"
+						size="32" required></td>
 				</tr>
-
-
 				<tr>
-
-					<th>メールアドレス</th>
-
-
-					<td><input type="text" name="mail_address" maxlength="128"
-						size="32"></td>
-
-				</tr>
-
-
-				<tr>
-
 					<th>パスワード</th>
-
-
 					<td><input type="password" name="password" maxlength="128"
-						size="32"></td>
-
+						size="32" required></td>
 				</tr>
-
-
-				<tr>
-
-					<th colspan="2"><button type="submit">ログイン</button></th>
-
-				</tr>
-
 			</tbody>
-
 		</table>
-
+		<br>
+		<button type="submit">ログイン</button>
 	</form>
 
 </body>

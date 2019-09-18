@@ -10,14 +10,14 @@ import org.springframework.stereotype.Service;
 @Service
 @Transactional(rollbackOn = Exception.class)
 
-public class UserService {
+public class UserService  {
 
 	@Autowired
 	private UserRepository userRepository;
 
 	public Page<UserEntity> selectAll(Pageable pageable) {
 		return userRepository.findAll(pageable);
-}
+    }
 	public void create(UserEntity userEntity) {
 		userRepository.save(userEntity);
 	}
@@ -30,4 +30,5 @@ public class UserService {
 	public void deleteUpdate(UserEntity userEntity) {
 		userRepository.save(userEntity);
 	}
+
 }
