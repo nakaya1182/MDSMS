@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,5 +23,9 @@ public class CustomerInformationService {
 	}
 	public CustomerInformationEntity findById(Integer id) {
 		return customerInformationRepository.findById(id);
+	}
+
+	public List<CustomerInformationEntity> findAll() {
+		return customerInformationRepository.findAll();
 	}
 }
