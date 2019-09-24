@@ -12,4 +12,6 @@ public interface CustomerInformationRepository extends PagingAndSortingRepositor
 
 	CustomerInformationEntity findById(Integer id);
 	List<CustomerInformationEntity> findAll();
+
+	CustomerInformationEntity findByCustomerName(String pullString);
 }

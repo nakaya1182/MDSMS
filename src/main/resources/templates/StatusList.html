@@ -22,9 +22,9 @@
 	<b>製造部売上管理システム：ステータス一覧</b>
 	<br><br>
 
-	<form th:action="@{/StatusRegistration/{pullString}(pullString=${pullString})}" th:method="Get">
-		<select name="pullString" >
-			<option th:each="user:${pullDownList}" th:object="${user}" value="*{id}"><span th:text="*{customerName}"></span></option>
+	<form th:action="@{/StatusRegistration}" th:method="Post" th:object="${pullString}">
+		<select name="customerId" >
+			<option th:each="user:${pullDownList}" th:object="${user}" th:value="*{id}"><span th:text="*{customerName}" ></span></option>
 		</select>
 			<input type="submit" value="新規登録" style="border:1px solid #FFFF00;background-color:#FFFF00; height:100%" />
 		<br><br><br>
@@ -35,7 +35,7 @@
 			<tr  height=40 bgcolor=cornflowerblue>
 				<th width=15% >顧客</th>
 				<th width=5% >ID</th>
-				<th width=20% >ステータス名</th>
+				<th width=20% >ステータス名称</th>
 				<th width=50% >説明</th>
 				<th width=5% ></th>
 				<th width=5% ></th>

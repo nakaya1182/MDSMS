@@ -9,19 +9,21 @@
 	<br>
 	<b>製造部売上管理システム：ステータス登録</b>
 	<br><br>
-	<!-- <form th:action="@{/CustomerInformationRegistrationConfirmation}" th:object="${StatusRegistrationList}" method="post">
-		<label style="text-align: Center; position: relative; right: -40px;">顧客* ：<input type="text"
-			name="customerName" maxlength='64' required th:value="*{customerName}"></label><br>
-		<label style="text-align: Center; position: relative; right: -50px;">業種 ：<input type="text"
-			name="industry" maxlength='32'></label><br>
-		<label style="text-align: Center; position: relative; right: -34px;">代表者 ：<input type="text"
-			name="representative" maxlength='16'></label><br>
+	<form th:action="@{/StatusRegistrationConfirmation}" th:object="${statusEntity}" method="post">
+		<label style="text-align: Center; position: relative; right: -48px;">顧客 ：</label><label
+			  th:object="${customerInformationEntity}" th:text="*{customerName}" style="text-align: Center; position: relative; right: -55px;">
+			</label><br>
+		<label style="text-align: Center; position: relative; right: 0px;">ステータス ：<input type="text"
+			name="name" maxlength='32' required></label><br>
+		<label style="text-align: Center; position: relative; right: -48px;">説明 ：</label>
+		<textarea
+			name="description" style="position: absolute; left: 109px; top: 130px" cols="22" rows="4" ></textarea><br>
 		<br>
 		<input name="submit" type="submit" value="確認" />
+		<input type="hidden" th:value="${customerId}" name="customerId"/>
 	</form>
-	<a th:href="@{/CustomerInformationList}">
+	<a th:href="@{/StatusList}">
 		<button type="submit">戻る</button>
 	</a>
--->
 </body>
 </html>

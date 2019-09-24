@@ -1,10 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
+<meta name="viewport" content="width=width=960,initial-scale=1"
+	charset="UTF-8">
 <title>ステータス登録確認</title>
 </head>
 <body>
+	<br>
+	<b>製造部売上管理システム：ステータス新規登録確認</b>
+	<br>
+	<br>
+	<table th:object="${statusEntity}">
+		<tr>
+			<td align="right">顧客:</td>
+			<td th:object="${customerInformationEntity}" th:text="*{customerName}"></td>
+		</tr>
+		<tr>
+			<td align="right">ステータス:</td>
+			<td th:text="*{name}"></td>
+		</tr>
+		<tr>
+			<td align="right">説明:</td>
+			<td th:text="*{description}"></td>
+		</tr>
+	</table>
+	<form method="post" th:action="@{/StatusInsert}" th:object="${statusEntity}">
+		<input type="hidden" th:value="*{customerId}" name="customerId"/>
+		<input type="hidden" name="name" th:value="*{name}">
+		<input type="hidden" name="description" th:value="*{description}">
+		<input type="submit" value="登録">
+	</form>
 
+	<form th:action="@{/StatusRegistration}" method="post">
+		<input type="hidden" th:value="${customerId}" name="customerId"/>
+		<button type="submit">戻る</button>
+	</form>
 </body>
 </html>

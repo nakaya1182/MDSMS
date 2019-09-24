@@ -28,8 +28,17 @@ public class StatusService {
 		return statusCustomerRepository.findAll();
 	}
 
-	public CustomerInformationEntity findById(Integer pullId) {
-		return customerInformationRepository.findById(pullId);
+	/*public CustomerInformationEntity findByCustomerName(String pullString) {
+		return customerInformationRepository.findByCustomerName(pullString);
+	}*/
+
+	public CustomerInformationEntity findById(Integer customerId) {
+		return customerInformationRepository.findById(customerId);
+	}
+
+	public void Insert(StatusEntity statusEntity) {
+		statusRepository.save(statusEntity);
+
 	}
 
 
