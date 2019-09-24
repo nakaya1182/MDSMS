@@ -1,10 +1,40 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
-<meta charset="UTF-8">
+<meta name="viewport" content="width=width=960,initial-scale=1"
+	charset="UTF-8">
 <title>ステータス削除</title>
 </head>
 <body>
+	<br>
+	<br>下記ステータス情報を削除します。よろしいですか？
+	<br>
+	<table th:object="${statusEntity}">
+		<tr>
+			<td align="right">顧客:</td>
+			<td th:object="${customerInformationEntity}" th:text="*{customerName}"></td>
+		</tr>
+		<tr>
+			<td align="right">ステータス:</td>
+			<td th:text="*{name}"></td>
+		</tr>
+		<tr>
+			<td align="right">説明:</td>
+			<td th:text="*{description}"></td>
+		</tr>
+	</table>
+	<form method="post" th:action="@{/StatusInsert}" th:object="${statusEntity}">
+		<input type="hidden" th:value="*{id}" name="id"/>
+		<input type="hidden" th:value="*{customerId}" name="customerId"/>
+		<input type="hidden" name="name" th:value="*{name}">
+		<input type="hidden" name="description" th:value="*{description}">
+		<input type="hidden" th:value="*{flag=1}" name="flag"/>
+		<input type="submit" value="OK">
+	</form>
 
+	<a th:href="@{/StatusList}">
+		<button type="submit">キャンセル</button>
+	</a>
 </body>
 </html>

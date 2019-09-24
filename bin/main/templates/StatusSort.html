@@ -1,10 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>ステータスソート</title>
 </head>
 <body>
+	<br>
+	<b>製造部売上管理システム：ステータスソート</b>
+	<br><br>
+	下記顧客のステータスを並び替えます。<br>
+	上から表示したい項目から順番にクリックしてください。
+	<br><br>
 
+	<form th:action="@{/StatusInsert}" th:object="${statusEntity}" method="post">
+		<label style="text-align: Center; position: relative; right: -48px;">顧客 ：</label><label
+		  th:object="${customerInformationEntity}" th:text="*{customerName}" style="text-align: Center; position: relative; right: -55px;">
+		</label><br>
+		<br>
+
+		<input name="submit" type="submit" value="OK" />
+
+	</form>
+	<a th:href="@{/StatusList}">
+		<button type="submit">キャンセル</button>
+	</a>
 </body>
 </html>

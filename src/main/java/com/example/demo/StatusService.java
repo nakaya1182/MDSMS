@@ -38,8 +38,13 @@ public class StatusService {
 
 	public void Insert(StatusEntity statusEntity) {
 		statusRepository.save(statusEntity);
-
 	}
 
+	public StatusEntity findByIdEdit(Integer id) {
+		return statusRepository.findById(id);
+	}
 
+	public List<StatusEntity> findByCustomerId(Integer customerId) {
+		return statusRepository.findByCustomerId(customerId);
+	}
 }

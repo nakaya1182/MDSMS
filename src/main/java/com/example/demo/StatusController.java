@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 @Controller
@@ -49,9 +50,53 @@ public class StatusController {
 	//登録処理
 	@PostMapping("/StatusInsert")
 	public String StatusInsert(@ModelAttribute StatusEntity statusEntity,Model model) {
-		System.out.println(statusEntity);
+
 		statusService.Insert(statusEntity);
-		System.out.println("statusEntity");
+
 		return "redirect:StatusList";
 	}
+
+	//編集画面に遷移
+	@GetMapping("/StatusEdit/{id}/{customerId}")
+    public String edit(@PathVariable Integer id,@PathVariable Integer customerId, Model model) {
+		CustomerInformationEntity customerInformationEntity=statusService.findById(customerId);
+		StatusEntity statusEntity=statusService.findByIdEdit(id);
+		model.addAttribute("customerInformationEntity", customerInformationEntity);
+		model.addAttribute("statusEntity", statusEntity);
+		return "StatusEdit";
+	}
+
+	//編集確認画面へ遷移
+	@PostMapping("/StatusEditConfirmation")
+	public String StatusEditConfirmation(@ModelAttribute StatusEntity statusEntity,Model model,Integer customerId) {
+		CustomerInformationEntity customerInformationEntity=statusService.findById(customerId);
+		model.addAttribute("customerInformationEntity", customerInformationEntity);
+		model.addAttribute("statusEntity", statusEntity);
+		model.addAttribute("customerId", customerId);
+		return "StatusEditConfirmation";
+	}
+
+	//削除画面に遷移
+	@GetMapping("/StatusDelete/{id}/{customerId}")
+    public String StatusDelete(@PathVariable Integer id,@PathVariable Integer customerId, Model model) {
+		CustomerInformationEntity customerInformationEntity=statusService.findById(customerId);
+		StatusEntity statusEntity=statusService.findByIdEdit(id);
+		model.addAttribute("customerInformationEntity", customerInformationEntity);
+		model.addAttribute("statusEntity", statusEntity);
+		return "StatusDelete";
+	}
+
+	//ソート画面へ遷移
+	@PostMapping("/StatusSort")
+	public String StatusSort(Model model,Integer customerId) {
+		CustomerInformationEntity customerInformationEntity=statusService.findById(customerId);
+		List<StatusEntity> statusEntity=statusService.findByCustomerId(customerId);
+		model.addAttribute("customerInformationEntity", customerInformationEntity);
+		model.addAttribute("statusEntity", statusEntity);
+		model.addAttribute("customerId", customerId);
+		System.out.println(statusEntity);
+		System.out.println(customerId);
+		return "StatusSort";
+	}
+
 }

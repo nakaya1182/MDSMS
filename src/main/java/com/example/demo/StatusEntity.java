@@ -23,7 +23,7 @@ public class StatusEntity implements Serializable{
     @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	@Column(name="customer_id")
-	private String 	customerId;
+	private Integer customerId;
 	@Column(name="name")
 	private String name;
 	@Column(name="description")
