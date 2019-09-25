@@ -22,29 +22,45 @@ public class LoginUserService implements UserDetailsService {
 
 
 	@Override
-	public UserDetails loadUserByUsername(String employee_number) throws UsernameNotFoundException {
-		if (employee_number == null) {
-			throw new UsernameNotFoundException("empty");
+	public UserDetails loadUserByUsername(String name) throws UsernameNotFoundException {
+		System.out.println(name);
+
+		//userRepository.findByEmployee_number(employee_number);
+
+		if(userRepository.findByName(name) != null ) {
+
+
 		}
-	System.out.println(employee_number);
-	System.out.println(passwordEncoder);
 
 
-	 /**UserEntity test =userRepository.findByemployee_number(employee_number);
+		//List<UserEntity> test =userRepository.findAll();
+		//System.out.println(test);
 
 
-	System.out.print(test);*/
 
 
 		String password;
-		switch (employee_number) {
+		switch (name) {
+		case "1000":
+			password = passwordEncoder.encode("hero1000");
+			break;
+		default:
+			throw new UsernameNotFoundException("not found : " + name);
+		case "1001":
+			password = passwordEncoder.encode("roku1001");
+			break;
+		case "1011":
+			password = passwordEncoder.encode("satokun1011");
+			break;
 		case "a":
 			password = passwordEncoder.encode("a");
 			break;
-		default:
-			throw new UsernameNotFoundException("not found : " + employee_number);
+
 		}
 
-		return new User(employee_number, password, Collections.emptySet());
+
+
+		return new User(name, password, Collections.emptySet());
+
 	}
 }

@@ -1,10 +1,87 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>案件編集確認</title>
 </head>
 <body>
+<b style="position: relative; left: 50px; top: 5px">製造部売上管理システム：案件編集</b>
+	<br>
+	<br>
+	<div th:object="${itemEntity}">
+
+		<table>
+			<tr>
+				<td align="right">顧客：</td>
+				<td th:text="*{customerId}"></td>
+			</tr>
+			<tr>
+				<td align="right">受注日：</td>
+				<td th:text="*{orderDate}"></td>
+			</tr>
+			<tr>
+				<td align="right">S番号：</td>
+				<td th:text="*{sNumber}"></td>
+			</tr>
+			<tr>
+				<td align="right">件名：</td>
+				<td th:text="*{title}"></td>
+			</tr>
+			<tr>
+				<td align="right">数量：</td>
+				<td th:text="*{quantity}"></td>
+			</tr>
+			<tr>
+				<td align="right">納入指定日：</td>
+				<td th:text="*{deliveryDate}"></td>
+			</tr>
+			<tr>
+				<td align="right">納入日：</td>
+				<td th:text="*{dueDate}"></td>
+			</tr>
+			<tr>
+				<td align="right">請求日：</td>
+				<td th:text="*{billingDate}"></td>
+			</tr>
+			<tr>
+				<td align="right">見積金額：</td>
+				<td th:text="*{estimatedAmount}"></td>
+			</tr>
+			<tr>
+				<td align="right">受注金額：</td>
+				<td th:text="*{orderAmount}"></td>
+			</tr>
+			<tr>
+				<td align="right">ステータス：</td>
+				<td th:text="*{statusId}"></td>
+			</tr>
+			<tr>
+				<td align="right">備考：</td>
+				<td th:text="*{note}"></td>
+			</tr>
+		</table>
+
+	</div>
+
+	<form th:action="@{/IE{id}(id=*{id})}" th:object="${itemEntity}" th:method="post">
+		<input type=hidden name="id">
+		<input type=hidden name="customerId" th:value="*{customerId}">
+		<input type=hidden name="orderDate" th:value="*{orderDate}">
+		<input type=hidden name="sNumber" th:value="*{sNumber}">
+		<input type=hidden name="title" th:value="*{title}">
+		<input type=hidden name="quantity" th:value="*{quantity}">
+		<input type=hidden name="quantityUnit">
+		<input type=hidden name="deliveryDate" th:value="*{deliveryDate}">
+		<input type=hidden name="dueDate" th:value="*{dueDate}">
+		<input type=hidden name="billingDate" th:value="*{billingDate}">
+		<input type=hidden name="estimatedAmount" th:value="*{estimatedAmount}">
+		<input type=hidden name="orderAmount" th:value="*{orderAmount}">
+		<input type=hidden name="statusId" th:value="*{statusId}">
+		<input type=hidden name="note" th:value="*{note}">
+		<input type="submit" style="width: 100px" value="編集" class="btn">
+		<a th:href="@{/{id}/ItemEdit(id=*{id})}"><input type="button" value="もどる"></a>
+	</form>
 
 </body>
 </html>
