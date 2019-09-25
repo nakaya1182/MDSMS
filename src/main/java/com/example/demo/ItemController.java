@@ -63,7 +63,7 @@ public class ItemController {
 		model.addAttribute("itemEntity", itemEntity);
 		return "ItemEdit";
 	}/**
-	 * 編集戻るボタン
+	 * 編集,削除戻るボタン
 	 */
 	@GetMapping(value = "/ListBack")
 	public String listBack(Model model) {
@@ -83,6 +83,24 @@ public class ItemController {
 	public String editUpdate(@PathVariable Integer id, @ModelAttribute ItemEntity itemEntity) {
 		itemEntity.setId(id);
 		itemService.editUpdate(itemEntity);
+		return "redirect:ItemList";
+	}
+	/**
+	 * ユーザー削除画面
+	 */
+	@GetMapping("/{id}/ItemDelete")
+	public String delete(@PathVariable Integer id, Model model) {
+		ItemEntity itemEntity = itemService.findById(id);
+		model.addAttribute("itemEntity", itemEntity);
+		return "ItemDeletion";
+	}
+	/**
+	 * 削除から一覧画面に戻る
+	 */
+	@PostMapping("ID{id}")
+	public String deleteUpdate(@PathVariable Integer id, @ModelAttribute ItemEntity itemEntity) {
+		itemEntity.setId(id);
+		itemService.deleteUpdate(itemEntity);
 		return "redirect:ItemList";
 	}
 

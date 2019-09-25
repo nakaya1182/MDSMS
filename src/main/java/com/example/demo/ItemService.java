@@ -28,4 +28,8 @@ public class ItemService {
 	public void editUpdate(ItemEntity itemEntity) {
 		itemRepository.save(itemEntity);
 	}
+	//削除
+	public void deleteUpdate(ItemEntity itemEntity) {
+		itemRepository.save(itemEntity);
+	}
 }
