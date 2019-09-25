@@ -13,17 +13,38 @@
 	上から表示したい項目から順番にクリックしてください。
 	<br><br>
 
-	<form th:action="@{/StatusInsert}" th:object="${statusEntity}" method="post">
-		<label style="text-align: Center; position: relative; right: -48px;">顧客 ：</label><label
-		  th:object="${customerInformationEntity}" th:text="*{customerName}" style="text-align: Center; position: relative; right: -55px;">
-		</label><br>
-		<br>
 
-		<input name="submit" type="submit" value="OK" />
+	<label style="text-align: Center; position: relative; right: -48px;">顧客 ：</label><label
+	  th:object="${customerInformationEntity}" th:text="*{customerName}" style="text-align: Center; position: relative; right: -55px;">
+	</label><br>
+	<br>
 
+
+
+	<form th:action="@{/StatusSorting}" th:each="user:${statusEntity}"  th:object="${user}" method="post">
+		<input type="hidden" th:value="*{id}" name="id">
+		<input type="hidden" th:value="*{customerId}" name="customerId">
+		<input  type="hidden" th:value=*{displayOrder} name="displayOrder"/>
+		<input type="hidden" th:value="${i}" name="i">
+		<input  type="submit" th:value=*{displayOrder} />
+		<em  th:text="*{name}"></em>
 	</form>
+	<br>
+
+
+
+
+	<br>
+	<br>
+
+
+	<form style="position: absolute; left: 50%; top: 40%" method="post" th:action="@{/StatusSortReset}" th:object="${customerId}">
+			<input type="hidden" th:value="${customerId}" name="customerId">
+			<input type="submit" value="リセット">
+	</form>
+
 	<a th:href="@{/StatusList}">
-		<button type="submit">キャンセル</button>
+		<button type="submit">OK</button>
 	</a>
 </body>
 </html>

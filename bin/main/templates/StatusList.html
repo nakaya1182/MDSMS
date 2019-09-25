@@ -22,22 +22,23 @@
 	<b>製造部売上管理システム：ステータス一覧</b>
 	<br><br>
 
-	<form th:action="@{/StatusRegistration}" th:method="Post" th:object="${pullString}">
-		<select name="customerId" >
-			<option th:each="user:${pullDownList}" th:object="${user}" th:value="*{id}"><span th:text="*{customerName}" ></span></option>
-		</select>
-			<input type="submit" value="新規登録" style="border:1px solid #FFFF00;background-color:#FFFF00; height:100%" />
-		<br><br><br>
-	</form>
-
-	<form th:action="@{/StatusSort}" th:method="Post" th:object="${pullString}">
-		<select name="customerId" >
-			<option th:each="user:${pullDownList}" th:object="${user}" th:value="*{id}"><span th:text="*{customerName}" ></span></option>
-		</select>
-			<input type="submit" value="ソート" style="border:1px solid #FFFF00;background-color:#FFFF00; height:100%" />
-		<br><br><br>
-	</form>
-
+	<div style="display:inline-flex">
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<form th:action="@{/StatusRegistration}" th:method="Post" th:object="${pullString}" style="display: inline">
+			<select name="customerId" >
+				<option th:each="user:${pullDownList}" th:object="${user}" th:value="*{id}"><span th:text="*{customerName}" ></span></option>
+			</select>
+				<input type="submit" value="新規登録"  />
+		</form>
+				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+		<form th:action="@{/StatusSort}" th:method="Post" th:object="${pullString}">
+			<select name="customerId" >
+				<option th:each="user:${pullDownList}" th:object="${user}" th:value="*{id}"><span th:text="*{customerName}" ></span></option>
+			</select>
+				<input type="submit" value="ソート"  />
+			<br><br><br>
+		</form>
+	</div>
 	<table border=1>
 		<thead>
 			<tr  height=40 bgcolor=cornflowerblue>

@@ -47,4 +47,13 @@ public class StatusService {
 	public List<StatusEntity> findByCustomerId(Integer customerId) {
 		return statusRepository.findByCustomerId(customerId);
 	}
+
+
+	public void SortReset(Integer customerId) {
+		statusRepository.SortReset(customerId);
+	}
+
+	public void Sorting(Integer id, int i) {
+		statusRepository.Sorting(id,i);
+	}
 }

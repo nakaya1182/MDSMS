@@ -94,8 +94,39 @@ public class StatusController {
 		model.addAttribute("customerInformationEntity", customerInformationEntity);
 		model.addAttribute("statusEntity", statusEntity);
 		model.addAttribute("customerId", customerId);
-		System.out.println(statusEntity);
+		int i=1;
+		model.addAttribute("i", i);
+		return "StatusSort";
+	}
+
+	//ソートリセットボタン処理
+	@PostMapping("/StatusSortReset")
+	public String StatusSortReset(Model model,Integer customerId) {
 		System.out.println(customerId);
+		statusService.SortReset(customerId);
+		CustomerInformationEntity customerInformationEntity=statusService.findById(customerId);
+		List<StatusEntity> statusEntity=statusService.findByCustomerId(customerId);
+		model.addAttribute("customerInformationEntity", customerInformationEntity);
+		model.addAttribute("statusEntity", statusEntity);
+		model.addAttribute("customerId", customerId);
+		int i=1;
+		model.addAttribute("i", i);
+		return "StatusSort";
+	}
+
+	//ソート処理
+	@PostMapping("/StatusSorting")
+	public String StatusSorting(Model model,Integer customerId,Integer id,Integer displayOrder,int i) {
+		if(displayOrder == null) {
+			statusService.Sorting(id,i);
+			i++;
+		}
+		CustomerInformationEntity customerInformationEntity=statusService.findById(customerId);
+		List<StatusEntity> statusEntity=statusService.findByCustomerId(customerId);
+		model.addAttribute("customerInformationEntity", customerInformationEntity);
+		model.addAttribute("statusEntity", statusEntity);
+		model.addAttribute("customerId", customerId);
+		model.addAttribute("i", i);
 		return "StatusSort";
 	}
 
