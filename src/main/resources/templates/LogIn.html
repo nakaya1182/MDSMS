@@ -11,13 +11,13 @@
 
 		<b>製造部売上管理システム：ログイン</b> <br> <br>
 <div th:if="${session['SPRING_SECURITY_LAST_EXCEPTION']} != null">
-		<font color="#FF0000"><b>社員番号かパスワードが間違っています！！！！</b></font>
+		<font color="#FF0000"><b>名前かパスワードが間違っています！！！！</b></font>
 	</div><br>
 		<table>
 			<tbody>
 				<tr>
-					<th>社員番号</th>
-					<td><input type="text" name="employee_number" maxlength="128" th:value="${employee_number}"
+					<th>名前</th>
+					<td><input type="text" name="name" maxlength="128" th:text="${name}"
 						size="32" required></td>
 				</tr>
 				<tr>

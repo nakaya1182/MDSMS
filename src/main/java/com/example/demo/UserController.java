@@ -24,7 +24,9 @@ public class UserController {
 
 
 
-
+	/**
+	 * 一覧表示を表示
+	 */
 	@RequestMapping(value = "UserList", method=RequestMethod.GET)
 	public String userList(Model model, @PageableDefault(page = 0, value = 10)Pageable pageable) {
 		Page<UserEntity> userList = userService.selectAll(pageable);

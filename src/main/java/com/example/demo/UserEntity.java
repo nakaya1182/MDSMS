@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -13,7 +15,7 @@ import lombok.Data;
 @Data
 @Table(name="user")
 @Where(clause = " flag = 0")
-public class UserEntity {
+public class UserEntity implements Serializable {
 	@Id
 
 	@Column(name="employee_number")
