@@ -1,10 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>ログイン画面</title>
 </head>
 <body>
+
+	<form name="loginForm" method="post" th:action="@{login}">
+
+		<b>製造部売上管理システム：ログイン</b> <br> <br>
+<div th:if="${session['SPRING_SECURITY_LAST_EXCEPTION']} != null">
+		<font color="#FF0000"><b>名前かパスワードが間違っています！！！！</b></font>
+	</div><br>
+		<table>
+			<tbody>
+				<tr>
+					<th>名前</th>
+					<td><input type="text" name="name" maxlength="128" th:text="${name}"
+						size="32" required></td>
+				</tr>
+				<tr>
+					<th>パスワード</th>
+					<td><input type="password" name="password" maxlength="128"
+						size="32" required></td>
+				</tr>
+			</tbody>
+		</table>
+		<br>
+		<button type="submit">ログイン</button>
+	</form>
 
 </body>
 </html>

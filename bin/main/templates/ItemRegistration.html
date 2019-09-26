@@ -1,10 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>案件登録</title>
 </head>
 <body>
-
+<br>
+	<b>製造部売上管理システム：案件登録</b>
+	<br><br>
+	<form th:action="@{/ItemRegistrationConfirmation}"
+		th:object="${itemEntity}" method="post">
+		<p>
+			<label style="position: relative; right: -48px;">顧客：</label>
+			<input style="position: relative; right: -48px;" type="text" id="customerId" name="customerId" size="30"><br>
+			<label style="position: relative; right: -32px;">受注日：</label>
+			<input style="position: relative; right: -32px;" type="text" id="orderDate" name="orderDate" size="30"><br>
+			<label style="position: relative; right: -37px;">S番号：</label>
+			<input style="position: relative; right: -37px;" type="text" id="sNumber" name="sNumber" size="30"><br>
+			<label style="position: relative; right: -48px;">件名：</label>
+			<input style="position: relative; right: -48px;" type="text" id="title" name="title" size="30"><br>
+			<label style="position: relative; right: -48px;">数量：</label>
+			<input style="position: relative; right: -48px;" type="text" id="quantity" name="quantity" size="30"><br>
+			<label style="position: relative; right:0px;">納入指定日：</label>
+			<input style="position: relative; right:0px;" type="text" id="deliveryDate" name="deliveryDate" size="30"><br>
+			<label style="position: relative; right: -32px;">納入日：</label>
+			<input style="position: relative; right: -32px;" type="text" id="dueDate" name="dueDate" size="30"><br>
+			<label style="position: relative; right: -32px;">請求日：</label>
+			<input style="position: relative; right: -32px;" type="text" id="billingDate" name="billingDate" size="30"><br>
+			<label style="position: relative; right: -16px;">見積金額：</label>
+			<input style="position: relative; right: -16px;" type="text" id="estimatedAmount" name="estimatedAmount" size="30"><br>
+			<label style="position: relative; right: -16px;">受注金額：</label>
+			<input style="position: relative; right: -16px;" type="text" id="orderAmount" name="orderAmount" size="30"><br>
+			<label style="position: relative; right: 0px;">ステータス：</label>
+			<input style="position: relative; right: 0px;" type="text" id="statusId" name="statusId" size="30"><br>
+			<label style="text-align: Center; position: relative; right: -48px;">備考：</label>
+			<textarea name="note" style="position: absolute; left: 109px; top: 360px" cols="40" rows="6" ></textarea><br><br>
+			<input style="position: absolute; left: 70px; top: 470px" type="submit" value="確認">
+			<input style="position: absolute; left: 130px; top: 470px" type="button" onclick="location.href='ItemList'" value="もどる">
+	</form>
 </body>
 </html>

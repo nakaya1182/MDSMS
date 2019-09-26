@@ -1,10 +1,71 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>案件編集</title>
 </head>
 <body>
-aaaaaaa
+<div class="container">
+		<b style="position: relative; left: 50px; top: 5px">製造部売上管理システム：案件編集</b>
+
+		<br> <br>
+		<form th:action="@{/{id}/ItemEditConfirmation(id=*{id})}"
+			th:object="${itemEntity}" th:method="post">
+			<div>
+				<label style="position: relative; left: 48px;">顧客：</label>
+				<label style="position: relative; left: 48px;" th:text="*{customerId}" ></label>
+				<input type="hidden" name="customerId" th:value="*{customerId}" />
+			</div>
+			<div>
+				<label style="position: relative; left: 32px;">受注日：</label>
+				<input style="position: relative; left: 32px;" type="text" name="orderDate" th:value="*{orderDate}" />
+			</div>
+			<div>
+				<label style="position: relative; left: 37px;">S番号：</label>
+				<input style="position: relative; left: 37px;" type="text" name="sNumber" th:value="*{sNumber}" />
+			</div>
+			<div>
+				<label style="position: relative; left: 48px;">件名：</label>
+				<input style="position: relative; left: 48px;" type="text" name="title" th:value="*{title}" />
+			</div>
+			<div>
+				<label style="position: relative; left: 48px;">数量：</label>
+				<input style="position: relative; left: 48px;" type="text" name="quantity" th:value="*{quantity}" />
+			</div>
+			<div>
+				<label style="position: relative; left: 0px;">納入指定日：</label>
+				<input style="position: relative; left: 0px;" type="text" name="deliveryDate" th:value="*{deliveryDate}" />
+			</div>
+			<div>
+				<label style="position: relative; left: 32px;">納入日：</label>
+				<input style="position: relative; left: 32px;" type="text" name="dueDate" th:value="*{dueDate}" />
+			</div>
+			<div>
+				<label style="position: relative; left: 32px;">請求日：</label>
+				<input style="position: relative; left: 32px;" type="text" name="billingDate" th:value="*{billingDate}" />
+			</div>
+			<div>
+				<label style="position: relative; left: 16px;">見積金額：</label>
+				<input style="position: relative; left: 16px;" type="text" name="estimatedAmount" th:value="*{estimatedAmount}" />
+			</div>
+			<div>
+				<label style="position: relative; left: 16px;">受注金額：</label>
+				<input style="position: relative; left: 16px;" type="text" name="orderAmount" th:value="*{orderAmount}" />
+			</div>
+			<div>
+				<label style="position: relative; left: 0px;">ステータス：</label>
+				<input style="position: relative; left: 0px;" type="text" name="statusId" th:value="*{statusId}" />
+			</div>
+			<div>
+				<label style="position: relative; left: 48px;">備考：</label>
+				<input style="position: relative; left: 48px;" type="text" name="note" th:value="*{note}" />
+			</div>
+			<br>
+			<input style="position: relative; left: 70px; width: 100px"  type="submit" value="確認"> <input style="position: relative; left: 90px; width: 100px" type="button"
+				onclick="location.href='/ListBack'" value="もどる">
+		</form>
+
+	</div>
 </body>
 </html>

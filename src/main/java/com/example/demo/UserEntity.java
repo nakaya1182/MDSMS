@@ -1,9 +1,9 @@
 package com.example.demo;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -15,9 +15,9 @@ import lombok.Data;
 @Data
 @Table(name="user")
 @Where(clause = " flag = 0")
-public class UserEntity {
+public class UserEntity implements Serializable {
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+
 	@Column(name="employee_number")
 	private Integer employee_number;
 
@@ -41,4 +41,14 @@ public class UserEntity {
 
 	@Column(name="flag")
 	private String flag;
+
+	@Column(name="password")
+	private String password;
+
+	public Integer getId() {
+		return employee_number;
+	}
+	public void setId(Integer employee_number) {
+		this.employee_number = employee_number;
+	}
 }

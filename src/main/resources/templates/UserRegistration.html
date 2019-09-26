@@ -1,10 +1,49 @@
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <title>ユーザ登録</title>
 </head>
 <body>
+	<b style="position: relative; left: 50px; top: 5px">製造部売上管理システム：ユーザ登録</b>
+	<br>
+	<br>
+	<br>
+	<form th:action="@{/UserRegistrationConfirmation}" th:object="${userEntity}"
+		th:method="post" style="position: relative; left: 90px;">
+
+		<p>
+			<label style="position: relative; right: 32px;">社員番号：</label>
+			<input type="text" id="employee_number" name="employee_number" size="60"  style="position: relative; right: 32px;"><br>
+			<label>氏名：</label>
+			<input type="text" id="name" name="name" size="60"><br>
+			<label style="position: relative; right: 32px;">生年月日：</label>
+			<input type="text" id="birthday" name="birthday" size="60"  style="position: relative; right: 32px;"><br>
+			<label>性別：</label>
+			<select name="sex" align="center">
+			<option value="男">男</option>
+			<option value="女">女</option>
+			</select><br>
+			<label style="position: relative; right: 80px;">メールアドレス：</label>
+			<input type="text" id="mail_address" name="mail_address" size="60" style="position: relative; right: 80px;"><br>
+			<label>住所：</label>
+			<input type="text" id="address" name="address" size="60"><br>
+			<label style="position: relative; right: 32px;">電話番号：</label>
+			<input type="text" id="tel" name="tel" size="60" style="position: relative; right: 32px;"><br>
+			<label style="position: relative; right: 48px;">パスワード：</label>
+			<input type="text" id="password" name="password" size="60" style="position: relative; right: 48px;">
+		</p>
+
+
+
+		<br>
+		<p>
+
+			<input type="submit" value="確認">
+			<input type="button" onclick="location.href='UserList'" value="もどる">
+	</form>
+
 
 </body>
 </html>
