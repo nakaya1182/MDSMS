@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import java.io.Serializable;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,13 +17,13 @@ import lombok.Data;
 @Data
 @Table(name="statuses")
 @Where(clause = " flag = 0")
-public class StatusEntity {
+public class StatusEntity implements Serializable{
 	@Id
 	@Column(name="id")
     @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer id;
 	@Column(name="customer_id")
-	private String 	customerId;
+	private Integer customerId;
 	@Column(name="name")
 	private String name;
 	@Column(name="description")

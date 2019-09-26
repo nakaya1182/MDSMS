@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import java.util.List;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.PagingAndSortingRepository;
@@ -9,4 +11,7 @@ public interface CustomerInformationRepository extends PagingAndSortingRepositor
 	Page<CustomerInformationEntity> findAll(Pageable pageable);
 
 	CustomerInformationEntity findById(Integer id);
+	List<CustomerInformationEntity> findAll();
+
+	CustomerInformationEntity findByCustomerName(String pullString);
 }
