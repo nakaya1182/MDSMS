@@ -10,4 +10,5 @@ public interface ItemRepository extends JpaRepository<ItemEntity, Integer>{
 
 	Page<ItemEntity> findAll(Pageable pageable);
 
+
 }
