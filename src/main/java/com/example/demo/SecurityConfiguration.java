@@ -43,14 +43,12 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	    extends GlobalAuthenticationConfigurerAdapter {
 	        @Autowired
 	        LoginUserService userDetailsService;
-
 	        @Override
 	        public void init(AuthenticationManagerBuilder auth) throws Exception {
 	            // 認証するユーザーを設定する
 	            auth.userDetailsService(userDetailsService)
 	            // 入力値をbcryptでハッシュ化した値でパスワード認証を行う
 	            .passwordEncoder(new BCryptPasswordEncoder());
-
 	        }
 	    }*/
 
