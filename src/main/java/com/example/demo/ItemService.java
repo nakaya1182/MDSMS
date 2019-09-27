@@ -32,4 +32,5 @@ public class ItemService {
 	public void deleteUpdate(ItemEntity itemEntity) {
 		itemRepository.save(itemEntity);
 	}
+
 }

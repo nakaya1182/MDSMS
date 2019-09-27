@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import java.sql.Timestamp;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -31,19 +33,21 @@ public class ItemController {
 		model.addAttribute("page", itemList);
 		model.addAttribute("ItemList", itemList.getContent());
 		return "ItemList";
-}
+	}
 	/**
 	 * 案件新規登録
 	 */
 	@GetMapping(value = "/ItemRegistration")
 	public String itemRegistration(Model model) {
 		return "ItemRegistration";
-}
+	}
 	/**
 	 * 新規登録の確認画面
 	 */
 	@RequestMapping(value ="/ItemRegistrationConfirmation", method = RequestMethod.POST)
 	public String itemRegistration(@ModelAttribute @Validated ItemEntity itemEntity, Model model) {
+		Timestamp nowTime = new Timestamp(System.currentTimeMillis());
+		model.addAttribute("nowTime", nowTime);
 		return "ItemRegistrationConfirmation";
 	}
 	/**
@@ -74,6 +78,8 @@ public class ItemController {
 	}*/
 	@RequestMapping(value = "{id}/ItemEditConfirmation" ,method = RequestMethod.POST)
 	public String editConfirmation(@ModelAttribute @Validated ItemEntity itemEntity, Model model) {
+		Timestamp nowTime = new Timestamp(System.currentTimeMillis());
+		model.addAttribute("nowTime", nowTime);
 		return "ItemEditConfirmation";
 	}
 	/**
@@ -91,7 +97,10 @@ public class ItemController {
 	@GetMapping("/{id}/ItemDelete")
 	public String delete(@PathVariable Integer id, Model model) {
 		ItemEntity itemEntity = itemService.findById(id);
+		Timestamp nowTime = new Timestamp(System.currentTimeMillis());
+		model.addAttribute("nowTime", nowTime);
 		model.addAttribute("itemEntity", itemEntity);
+
 		return "ItemDeletion";
 	}
 	/**

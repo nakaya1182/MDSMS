@@ -18,6 +18,7 @@ public class UserService  {
 	//一覧表示
 	public Page<UserEntity> selectAll(Pageable pageable) {
 		return userRepository.findAll(pageable);
+
     }
 	//新規登録
 	public void create(UserEntity userEntity) {

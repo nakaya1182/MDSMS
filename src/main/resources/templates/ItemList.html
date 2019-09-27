@@ -45,17 +45,17 @@
 				<td th:text="*{orderDate}" rowspan="2"></td>
 				<td th:text="*{sNumber}" rowspan="2" nowrap></td>
 				<td th:text="*{title}" rowspan="2"></td>
-				<td th:text="*{quantity}" rowspan="2"></td>
+				<td th:text="*{quantity}+ *{quantityUnit}" rowspan="2"></td>
 				<td th:text="*{deliveryDate}" align="center"> </td>
 				<td th:text="*{billingDate}" rowspan="2"></td>
-				<td th:text="*{estimatedAmount}"></td>
+				<td th:text="'￥' + *{estimatedAmount}"></td>
 				<td th:text="*{statusId}" rowspan="2"></td>
 				<td nowrap bgcolor="999999" rowspan="2"><a th:href="@{/{id}/ItemEdit(id=*{id})}">編集</a></td>
 				<td nowrap bgcolor="999999" rowspan="2"><a th:href="@{/{id}/ItemDelete(id=*{id})}">削除</a></td>
 			</tr>
 <tr>
 <td th:text="*{dueDate}" align="center"></td>
-<td th:text="*{orderAmount}"></td>
+<td th:text="'￥' + *{orderAmount}"></td>
 
 
 </tr>

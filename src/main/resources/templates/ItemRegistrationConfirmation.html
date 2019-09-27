@@ -31,7 +31,7 @@
 			</tr>
 			<tr>
 				<td align="right">数量：</td>
-				<td th:text="*{quantity}"></td>
+				<td th:text="*{quantity}+ *{quantityUnit}"></td>
 			</tr>
 			<tr>
 				<td align="right">納入指定日 ：</td>
@@ -64,6 +64,7 @@
 		</table>
 
 	</div>
+	<br>
 	<form th:action="@{/ItemList}" th:object="${itemEntity}" th:method="post">
 		<input type=hidden name="id">
 		<input type=hidden name="customerId" th:value="*{customerId}">
@@ -71,7 +72,7 @@
 		<input type=hidden name="sNumber" th:value="*{sNumber}">
 		<input type=hidden name="title" th:value="*{title}">
 		<input type=hidden name="quantity" th:value="*{quantity}">
-		<input type=hidden name="quantityUnit">
+		<input type=hidden name="quantityUnit" th:value="*{quantityUnit}">
 		<input type=hidden name="deliveryDate" th:value="*{deliveryDate}">
 		<input type=hidden name="dueDate" th:value="*{dueDate}">
 		<input type=hidden name="billingDate" th:value="*{billingDate}">
@@ -79,6 +80,8 @@
 		<input type=hidden name="orderAmount" th:value="*{orderAmount}">
 		<input type=hidden name="statusId" th:value="*{statusId}">
 		<input type=hidden name="note" th:value="*{note}">
+		<input type=hidden name="createdAt" th:value="${nowTime}">
+		<input type=hidden name="updatedAt" th:value="${nowTime}">
 		<input type="submit" style="width: 100px" value="登録" class="btn">
 		<input type="button" onclick="location.href='/ItemRegistration'" value="もどる">
 	</form>
