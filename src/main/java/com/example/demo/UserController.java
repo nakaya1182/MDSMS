@@ -116,7 +116,7 @@ public class UserController {
 
 	@RequestMapping(value="/test")
 	String login() {
-		return "redirect:UserList";
+		return "redirect:ItemList";
 	}
 	@RequestMapping(value="/logout")
 	String logout() {

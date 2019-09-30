@@ -14,7 +14,7 @@
 		<table>
 			<tr>
 				<td align="right">顧客：</td>
-				<td th:text="*{customerId}"></td>
+				<td th:object="${customerInformationEntity}" th:text="*{customerName}"></td>
 			</tr>
 			<tr>
 				<td align="right">受注日：</td>
@@ -54,7 +54,7 @@
 			</tr>
 			<tr>
 				<td align="right">ステータス：</td>
-				<td th:text="*{statusId}"></td>
+				<td th:object="${statusEntity}" th:text="*{name}"></td>
 			</tr>
 			<tr>
 				<td align="right">備考：</td>
@@ -64,8 +64,8 @@
 
 	</div>
 
-	<form th:action="@{/IE{id}(id=*{id})}" th:object="${itemEntity}" th:method="post">
-		<input type=hidden name="id">
+	<form th:action="@{/IE}" th:object="${itemEntity}" th:method="post">
+		<input type=hidden name="id" th:value="*{id}">
 		<input type=hidden name="customerId" th:value="*{customerId}">
 		<input type=hidden name="orderDate" th:value="*{orderDate}">
 		<input type=hidden name="sNumber" th:value="*{sNumber}">
@@ -80,8 +80,8 @@
 		<input type=hidden name="statusId" th:value="*{statusId}">
 		<input type=hidden name="note" th:value="*{note}">
 		<input type="submit" style="width: 100px" value="編集" class="btn">
-		<a th:href="@{/{id}/ItemEdit(id=*{id})}"><input type="button" value="もどる"></a>
-	</form>
 
+	</form>
+	<a th:href="@{/ItemEdit/{id}/{customerId}/{statusId}(id=${id},customerId=${customerId},statusId=${statusId})}"><input type="button" value="もどる"></a>
 </body>
 </html>

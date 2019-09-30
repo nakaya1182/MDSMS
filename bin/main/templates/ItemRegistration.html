@@ -12,8 +12,11 @@
 	<form th:action="@{/ItemRegistrationConfirmation}"
 		th:object="${itemEntity}" method="post">
 		<p>
-			<label style="position: relative; right: -48px;">顧客：</label>
-			<input style="position: relative; right: -48px;" type="text" id="customerId" name="customerId" size="30"><br>
+
+
+			<label style="text-align: Center; position: relative; right: -48px;">顧客 ：</label><label
+			  th:object="${customerInformationEntity}" th:text="*{customerName}" style="text-align: Center; position: relative; right: -55px;">
+			</label><br>
 			<label style="position: relative; right: -32px;">受注日：</label>
 			<input style="position: relative; right: -32px;" type="text" id="orderDate" name="orderDate" size="30"><br>
 			<label style="position: relative; right: -37px;">S番号：</label>

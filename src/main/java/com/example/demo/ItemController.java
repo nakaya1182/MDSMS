@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,24 +21,31 @@ public class ItemController {
 
 	@Autowired
 	ItemService itemService;
-
-
-
+	@Autowired
+	CustomerInformationService customerInformationService;
+	@Autowired
+	StatusService statusService;
 	/**
 	 * 一覧表示を表示
 	 */
-	@RequestMapping(value = "ItemList", method=RequestMethod.GET)
+	@GetMapping(value = "ItemList")
 	public String itemList(Model model, @PageableDefault(page = 0, value = 10)Pageable pageable) {
-		Page<ItemEntity> itemList = itemService.selectAll(pageable);
+		Page<ItemCustomerStatusEntity> itemList = itemService.findAll(pageable);
+		List<CustomerInformationEntity> pullDownList=customerInformationService.findAll();
 		model.addAttribute("page", itemList);
-		model.addAttribute("ItemList", itemList.getContent());
+		model.addAttribute("pullDownList", pullDownList);
 		return "ItemList";
 }
 	/**
 	 * 案件新規登録
 	 */
-	@GetMapping(value = "/ItemRegistration")
-	public String itemRegistration(Model model) {
+	@PostMapping(value = "/ItemRegistration")
+	public String itemRegistration(Model model,Integer customerId) {
+		CustomerInformationEntity customerInformationEntity=customerInformationService.findByCustomerId(customerId);
+		List<StatusCustomerEntity> statusCustomerEntity=statusService.findByCustmerId(customerId);
+		model.addAttribute("customerInformationEntity", customerInformationEntity);
+		model.addAttribute("statusCustomerEntity", statusCustomerEntity);
+		model.addAttribute("customerId", customerId);
 		return "ItemRegistration";
 }
 	/**
@@ -55,12 +64,20 @@ public class ItemController {
 		return "redirect:ItemList";
 	}
 	/**
-	 * ユーザー編集画面
+	 * 編集画面
 	}*/
-	@GetMapping("/{id}/ItemEdit")
-	public String edit(@PathVariable Integer id, Model model) {
+	@GetMapping("/ItemEdit/{id}/{customerId}/{statusId}")
+	public String edit(@PathVariable Integer id, @PathVariable Integer customerId,@PathVariable Integer statusId,Model model) {
+		CustomerInformationEntity customerInformationEntity=itemService.findByCustomerId(customerId);
+		//StatusEntity statusEntity = itemService.findByStatusId(statusId);
+		List<StatusCustomerEntity> statusEntity = itemService.findByCustmerId(customerId);
 		ItemEntity itemEntity = itemService.findById(id);
+		model.addAttribute("customerInformationEntity", customerInformationEntity);
+		model.addAttribute("statusEntity", statusEntity);
 		model.addAttribute("itemEntity", itemEntity);
+		model.addAttribute("id", id);
+		model.addAttribute("customerId", customerId);
+		model.addAttribute("statusId", statusId);
 		return "ItemEdit";
 	}/**
 	 * 編集,削除戻るボタン
@@ -72,25 +89,37 @@ public class ItemController {
 	/**
 	 * 編集の確認画面
 	}*/
-	@RequestMapping(value = "{id}/ItemEditConfirmation" ,method = RequestMethod.POST)
-	public String editConfirmation(@ModelAttribute @Validated ItemEntity itemEntity, Model model) {
+	@RequestMapping(value = "/ItemEditConfirmation" ,method = RequestMethod.POST)
+	public String editConfirmation(@Validated ItemEntity itemEntity, Model model,Integer id,Integer customerId,Integer statusId) {
+		CustomerInformationEntity customerInformationEntity=itemService.findByCustomerId(customerId);
+		StatusEntity statusEntity = itemService.findByStatusId(statusId);
+		model.addAttribute("customerInformationEntity", customerInformationEntity);
+		model.addAttribute("statusEntity", statusEntity);
+		model.addAttribute("itemEntity", itemEntity);
+		model.addAttribute("id", id);
+		model.addAttribute("customerId", customerId);
+		model.addAttribute("statusId", statusId);
 		return "ItemEditConfirmation";
 	}
 	/**
-	 * 編集確認から一覧画面に戻る
+	 * 編集確認からあぷでーと
 	 */
-	@PostMapping("IE{id}")
-	public String editUpdate(@PathVariable Integer id, @ModelAttribute ItemEntity itemEntity) {
+	@PostMapping("IE")
+	public String editUpdate(Integer id, ItemEntity itemEntity) {
 		itemEntity.setId(id);
 		itemService.editUpdate(itemEntity);
 		return "redirect:ItemList";
 	}
 	/**
-	 * ユーザー削除画面
+	 * 削除画面
 	 */
-	@GetMapping("/{id}/ItemDelete")
-	public String delete(@PathVariable Integer id, Model model) {
+	@GetMapping("/ItemDelete/{id}/{customerId}/{statusId}")
+	public String delete(@PathVariable Integer id,@PathVariable Integer customerId,@PathVariable Integer statusId, Model model) {
+		CustomerInformationEntity customerInformationEntity=itemService.findByCustomerId(customerId);
+		StatusEntity statusEntity = itemService.findByStatusId(statusId);
 		ItemEntity itemEntity = itemService.findById(id);
+		model.addAttribute("customerInformationEntity", customerInformationEntity);
+		model.addAttribute("statusEntity", statusEntity);
 		model.addAttribute("itemEntity", itemEntity);
 		return "ItemDeletion";
 	}
@@ -103,5 +132,6 @@ public class ItemController {
 		itemService.deleteUpdate(itemEntity);
 		return "redirect:ItemList";
 	}
+
 
 }

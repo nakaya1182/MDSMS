@@ -12,7 +12,7 @@
 	<form th:action="@{/StatusRegistrationConfirmation}" th:object="${statusEntity}" method="post">
 		<label style="text-align: Center; position: relative; right: -48px;">顧客 ：</label><label
 			  th:object="${customerInformationEntity}" th:text="*{customerName}" style="text-align: Center; position: relative; right: -55px;">
-			</label><br>
+		</label><br>
 		<label style="text-align: Center; position: relative; right: 0px;">ステータス ：<input type="text"
 			name="name" maxlength='32' required></label><br>
 		<label style="text-align: Center; position: relative; right: -48px;">説明 ：</label>

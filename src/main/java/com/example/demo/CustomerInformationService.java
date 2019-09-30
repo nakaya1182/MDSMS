@@ -28,4 +28,7 @@ public class CustomerInformationService {
 	public List<CustomerInformationEntity> findAll() {
 		return customerInformationRepository.findAll();
 	}
+	public CustomerInformationEntity findByCustomerId(Integer customerId) {
+		return customerInformationRepository.findById(customerId);
+	}
 }

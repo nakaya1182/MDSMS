@@ -1,5 +1,7 @@
 package com.example.demo;
 
+import java.util.List;
+
 import javax.transaction.Transactional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +14,17 @@ import org.springframework.stereotype.Service;
 public class ItemService {
 	@Autowired
 	private ItemRepository itemRepository;
+	@Autowired
+	ItemCustomerStatusRepository itemCustomerStatusRepository;
+	@Autowired
+	CustomerInformationRepository customerInformationRepository;
+	@Autowired
+	StatusRepository statusRepository;
+	@Autowired
+	StatusCustomerRepository statusCustomerRepository;
 	//一覧表示
-	public Page<ItemEntity> selectAll(Pageable pageable) {
-		return itemRepository.findAll(pageable);
+	public Page<ItemCustomerStatusEntity> findAll(Pageable pageable) {
+		return itemCustomerStatusRepository.findAll(pageable);
 	}
 	//新規登録
 	public void create(ItemEntity itemEntity) {
@@ -32,4 +42,17 @@ public class ItemService {
 	public void deleteUpdate(ItemEntity itemEntity) {
 		itemRepository.save(itemEntity);
 	}
+	//customerIdから顧客名取得
+	public CustomerInformationEntity findByCustomerId(Integer customerId) {
+		return customerInformationRepository.findById(customerId);
+	}
+	//statusIdからステータス名取得
+	public StatusEntity findByStatusId(Integer statusId) {
+		return statusRepository.findById(statusId);
+	}
+	//customerIdからその顧客のステータスの一覧を取得
+	public List<StatusCustomerEntity> findByCustmerId(Integer customerId) {
+		return statusCustomerRepository.findByCustmerId(customerId);
+	}
+
 }
