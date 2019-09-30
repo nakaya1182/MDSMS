@@ -121,7 +121,7 @@
 				<td th:text="*{deliveryDate}" align="center"> </td>
 
 				<td th:text="*{billingDate}" rowspan="2"></td>
-				<td th:text="*{estimatedAmount}"></td>
+				<td th:text="'￥' +*{estimatedAmount}"></td>
 				<td th:text="*{Name}" rowspan="2"></td>
 				<td nowrap bgcolor="999999" rowspan="2"><a th:href="@{/ItemEdit/{id}/{customerId}/{statusId}(id=*{id},customerId=*{customerId},statusId=*{statusId})}">編集</a></td>
 				<td nowrap bgcolor="999999" rowspan="2"><a th:href="@{/ItemDelete/{id}/{customerId}/{statusId}(id=*{id},customerId=*{customerId},statusId=*{statusId})}">削除</a></td>
@@ -202,5 +202,12 @@
 			</li>
 		</ul>
 	</div>
+	<form th:action="@{/ItemRegistration}" th:method="Post" th:object="${pullString}" style="display: inline">
+		<select name="customerId" >
+			<option th:each="user:${pullDownList}" th:object="${user}" th:value="*{id}"><span th:text="*{customerName}" ></span></option>
+		</select>
+			<input type="submit" value="新規登録"  />
+	</form>
+
 </body>
 </html>

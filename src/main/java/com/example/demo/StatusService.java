@@ -60,4 +60,8 @@ public class StatusService {
 	public List<StatusCustomerEntity> findByCustmerId(Integer customerId) {
 		return statusCustomerRepository.findByCustmerId(customerId);
 	}
+
+	public StatusEntity findByStatusId(Integer statusId) {
+		return statusRepository.findById(statusId);
+	}
 }
