@@ -1,6 +1,6 @@
 package com.example.demo;
 
-import java.sql.Date;
+import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -9,12 +9,14 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.Where;
+
 import lombok.Data;
 
 @Entity
 @Data
 @Table(name="order_matter")
-//@Where(clause = " deleted_at = 'NULL'")
+@Where(clause = " deleted_at is NULL")
 public class ItemEntity {
 	@Id
 	@Column(name="id")
@@ -62,15 +64,17 @@ public class ItemEntity {
 
 
 	@Column(name="created_at")
-	private Date createdAt;
+	private Timestamp createdAt;
+
 
 
 	@Column(name="updated_at")
-	private Date updatedAt;
+	private Timestamp updatedAt;
+
 
 
 	@Column(name="deleted_at")
-	private Date deletedAt;
+	private Timestamp deletedAt;
 
 	public Integer getId() {
 		return id;

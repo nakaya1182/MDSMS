@@ -116,7 +116,7 @@
 				<td th:text="*{orderDate}" rowspan="2"></td>
 				<td th:text="*{sNumber}" rowspan="2" nowrap></td>
 				<td th:text="*{title}" rowspan="2"></td>
-				<td th:text="*{quantity}" rowspan="2"></td>
+				<td th:text="*{quantity}+ *{quantityUnit}" rowspan="2"></td>
 				<td th:text="*{deliveryDate}" align="center"> </td>
 				<td th:text="*{billingDate}" rowspan="2"></td>
 				<td th:text="*{estimatedAmount}"></td>
@@ -126,7 +126,7 @@
 			</tr>
 <tr>
 <td th:text="*{dueDate}" align="center"></td>
-<td th:text="*{orderAmount}"></td>
+<td th:text="'￥' + *{orderAmount}"></td>
 
 
 </tr>

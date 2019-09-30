@@ -22,14 +22,14 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		.anyRequest().authenticated(); // その他の全リクエストに対して認証を要求
 		//ログイン設定
 		http.formLogin()
-		.loginPage("/login").usernameParameter("name").passwordParameter("password") // ログイン画面
+		.loginPage("/login").usernameParameter("employee_number").passwordParameter("password") // ログイン画面
 		.successForwardUrl("/test") // ログイン成功時に表示するURL
 		.permitAll();
 		//ログアウト設定
 		http.logout() //
 		.logoutRequestMatcher(new AntPathRequestMatcher("/logout")) // logoutUrl()はPOSTに対応していない
-		.logoutSuccessUrl("/login") // ログアウト成功時に表示するURL
-		.deleteCookies("JSESSIONID").invalidateHttpSession(true).permitAll();
+		.logoutSuccessUrl("/login"); // ログアウト成功時に表示するURL
+
 	}
 
 	//passwordのハッシュ化

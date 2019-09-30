@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +36,7 @@ public class ItemController {
 		model.addAttribute("page", itemList);
 		model.addAttribute("pullDownList", pullDownList);
 		return "ItemList";
-}
+	}
 	/**
 	 * 案件新規登録
 	 */
@@ -47,12 +48,14 @@ public class ItemController {
 		model.addAttribute("statusCustomerEntity", statusCustomerEntity);
 		model.addAttribute("customerId", customerId);
 		return "ItemRegistration";
-}
+	}
 	/**
 	 * 新規登録の確認画面
 	 */
 	@RequestMapping(value ="/ItemRegistrationConfirmation", method = RequestMethod.POST)
 	public String itemRegistration(@ModelAttribute @Validated ItemEntity itemEntity, Model model) {
+		Timestamp nowTime = new Timestamp(System.currentTimeMillis());
+		model.addAttribute("nowTime", nowTime);
 		return "ItemRegistrationConfirmation";
 	}
 	/**
@@ -99,6 +102,7 @@ public class ItemController {
 		model.addAttribute("id", id);
 		model.addAttribute("customerId", customerId);
 		model.addAttribute("statusId", statusId);
+
 		return "ItemEditConfirmation";
 	}
 	/**
@@ -120,7 +124,9 @@ public class ItemController {
 		ItemEntity itemEntity = itemService.findById(id);
 		model.addAttribute("customerInformationEntity", customerInformationEntity);
 		model.addAttribute("statusEntity", statusEntity);
+
 		model.addAttribute("itemEntity", itemEntity);
+
 		return "ItemDeletion";
 	}
 	/**

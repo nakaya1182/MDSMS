@@ -42,6 +42,7 @@ public class ItemService {
 	public void deleteUpdate(ItemEntity itemEntity) {
 		itemRepository.save(itemEntity);
 	}
+
 	//customerIdから顧客名取得
 	public CustomerInformationEntity findByCustomerId(Integer customerId) {
 		return customerInformationRepository.findById(customerId);
@@ -56,3 +57,4 @@ public class ItemService {
 	}
 
 }
+
