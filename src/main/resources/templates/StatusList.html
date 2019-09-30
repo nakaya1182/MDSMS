@@ -56,8 +56,8 @@
 			    <td th:text="*{id}" ></td>
 			    <td th:text="*{name}"></td>
 			    <td th:text="*{description}"></td>
-			    <td><a th:href="@{/StatusEdit/{id}/{customerId}(id=*{id},customerId=*{customerId})}"><button type="submit"  style="border:1px solid #000066;background-color:#000066; height:100%" ><font color="#FFFFFF">編集</font></button></a></td>
-			    <td><a th:href="@{/StatusDelete/{id}/{customerId}(id=*{id},customerId=*{customerId})}"><button type="submit"  style="border:1px solid #000066;background-color:#000066; height:100%" ><font color="#ff8c00">削除</font></button></a></td>
+			    <td style="background: #000066;"><a th:href="@{/StatusEdit/{id}/{customerId}(id=*{id},customerId=*{customerId})}"><button type="submit"  style="border:1px solid #000066;background-color:#000066; height:100%" ><font color="#FFFFFF">編集</font></button></a></td>
+			    <td style="background: #000066;"><a th:href="@{/StatusDelete/{id}/{customerId}(id=*{id},customerId=*{customerId})}"><button type="submit"  style="border:1px solid #000066;background-color:#000066; height:100%" ><font color="#ff8c00">削除</font></button></a></td>
 		   </tr>
 		</tbody>
 	</table>

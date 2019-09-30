@@ -95,6 +95,7 @@
 	</div>
 
 <table border="1">
+
 		<thead>
 			<tr height=40 bgcolor=cornflowerblue>
 				<th>顧客</th>
@@ -118,11 +119,13 @@
 				<td th:text="*{title}" rowspan="2"></td>
 				<td th:text="*{quantity}+ *{quantityUnit}" rowspan="2"></td>
 				<td th:text="*{deliveryDate}" align="center"> </td>
+
 				<td th:text="*{billingDate}" rowspan="2"></td>
-				<td th:text="*{estimatedAmount}"></td>
+  <td th:text="*{estimatedAmount}"></td>
 				<td th:text="*{Name}" rowspan="2"></td>
 				<td nowrap bgcolor="999999" rowspan="2"><a th:href="@{/ItemEdit/{id}/{customerId}/{statusId}(id=*{id},customerId=*{customerId},statusId=*{statusId})}">編集</a></td>
 				<td nowrap bgcolor="999999" rowspan="2"><a th:href="@{/ItemDelete/{id}/{customerId}/{statusId}(id=*{id},customerId=*{customerId},statusId=*{statusId})}">削除</a></td>
+
 			</tr>
 <tr>
 <td th:text="*{dueDate}" align="center"></td>

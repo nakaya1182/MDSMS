@@ -113,8 +113,8 @@
 				<td th:text="*{mail_address}"></td>
 				<td th:text="*{address}"></td>
 				<td th:text="*{tel}"></td>
-				<td bgcolor="999999"><a th:href="@{/{employee_number}/UserEdit(employee_number=*{employee_number})}">編集</a></td>
-				<td bgcolor="999999"><a th:href="@{/{employee_number}/UserDelete(employee_number=*{employee_number})}">削除</a></td>
+				<td style="background: #000066;"><a th:href="@{/{employee_number}/UserEdit(employee_number=*{employee_number})}"><button type="submit"  style="border:1px solid #000066;background-color:#000066; height:100%" ><font color="#FFFFFF">編集</font></button></a></td>
+				<td style="background: #000066;"><a th:href="@{/{employee_number}/UserDelete(employee_number=*{employee_number})}"><button type="submit"  style="border:1px solid #000066;background-color:#000066; height:100%" ><font color="#FF0000">削除</font></button></a></td>
 
 			</tr>
 		</tbody>
