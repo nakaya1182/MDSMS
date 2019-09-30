@@ -50,8 +50,8 @@
 				<td th:text="*{billingDate}" rowspan="2"></td>
 				<td th:text="'￥' + *{estimatedAmount}"></td>
 				<td th:text="*{statusId}" rowspan="2"></td>
-				<td nowrap bgcolor="999999" rowspan="2"><a th:href="@{/{id}/ItemEdit(id=*{id})}">編集</a></td>
-				<td nowrap bgcolor="999999" rowspan="2"><a th:href="@{/{id}/ItemDelete(id=*{id})}">削除</a></td>
+				<td style="background: #000066;" rowspan="2"><a th:href="@{/{id}/ItemEdit(id=*{id})}"><button type="submit"  style="border:1px solid #000066;background-color:#000066; height:100%" ><font color="#FFFFFF">編集</font></button></a></td>
+				<td style="background: #000066;" rowspan="2"><a th:href="@{/{id}/ItemDelete(id=*{id})}"><button type="submit"  style="border:1px solid #000066;background-color:#000066; height:100%" ><font color="#FF0000">削除</font></button></a></td>
 			</tr>
 <tr>
 <td th:text="*{dueDate}" align="center"></td>

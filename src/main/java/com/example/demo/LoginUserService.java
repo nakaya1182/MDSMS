@@ -33,25 +33,33 @@ public class LoginUserService implements UserDetailsService {
 
 		//userRepository.findByEmployee_number(employee_number);
 
-	if(userRepository.findByName(employee_number) != null ) {
-		}
+		String employeeNumber = userRepository.findByName(employee_number);
+
 		//String i = employee_number;
 
 //		 String employeeNumber = UserRepository.loginName(i);
 
 
-
-
+if(employeeNumber != null) {
+	String password;
+    String LP = userRepository.findByPass(employeeNumber);
+	password = passwordEncoder.encode(LP);
+	return new User(employee_number, password, Collections.emptySet());
+}else {
+	throw new UsernameNotFoundException("not found : " + employee_number);
+}
+	}
+}
 		//List<UserEntity> test =userRepository.findAll();
 		//System.out.println(test);
 
 
 
 
-		String password;
-		switch (employee_number) {
-		case "1000":
-			password = passwordEncoder.encode("hero1000");
+		/**String password;
+		switch (employeeNumber) {
+		case "employeeNumber":
+			password = passwordEncoder.encode("a");
 			break;
 		default:
 			throw new UsernameNotFoundException("not found : " + employee_number);
@@ -72,4 +80,4 @@ public class LoginUserService implements UserDetailsService {
 		return new User(employee_number, password, Collections.emptySet());
 
 	}
-}
+}*/

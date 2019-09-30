@@ -15,10 +15,12 @@ public interface UserRepository  extends JpaRepository<UserEntity, Integer>{
 	Page<UserEntity> findAll(Pageable pageable);
 	//UserEntity findByName(String name);
 	Page<UserEntity> findByAddressContaining(Pageable pageable,String Search);
-   /** List<UserEntity> findByEmployeeId(Integer employee_number);*/
+	/** List<UserEntity> findByEmployeeId(Integer employee_number);*/
 
 	@Query (value = "select * from user where employee_number = :employee_number",nativeQuery = true)
 	String findByName(@Param("employee_number")String employee_number);
 
+	@Query (value = "select password from user where employee_number = :employee_number",nativeQuery = true)
+	String findByPass(@Param("employee_number")String employee_number);
 }
 
