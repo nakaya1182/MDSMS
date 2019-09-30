@@ -21,7 +21,78 @@
 	<b>製造部売上管理システム：案件一覧</b>
 <br>
 <br>
-<input type="button" th:onclick="location.href='/ItemRegistration'" value="新規登録">
+	<form th:action="@{/ItemRegistration}" th:method="Post" th:object="${pullString}" style="display: inline">
+		<select name="customerId" >
+			<option th:each="user:${pullDownList}" th:object="${user}" th:value="*{id}"><span th:text="*{customerName}" ></span></option>
+		</select>
+			<input type="submit" value="新規登録"  />
+	</form>
+
+	<div th:fragment='paginationbar' th:if="!${#lists.isEmpty(page)}">
+		<ul th:object="${Search}">
+
+
+			<li th:class="${page.first} ? 'disabled':''" style="display: inline">
+				<span th:if="${page.first}">&lt&lt</span> <a
+				th:if="${not page.first}"
+				th:href="@{${url}(page=0,Search=${Search})}">&lt&lt</a>
+			</li>
+
+
+			<li th:class="(${page.number})? 'active' : ''"
+				style="display: inline"><span th:if="${page.first}">&lt</span>
+				<a th:if="${not page.first}"
+				th:href="@{${url}(page=(${page.number}-1),Search=${Search})}">&lt</a></li>
+
+			<li th:if="${page.totalPages <= 4}"
+				th:each='i : ${#numbers.sequence(0, page.totalPages-1)}'
+				th:class="(${i}==${page.number})? 'active' : ''"
+				style="display: inline"><span th:if='${i}==${page.number}'
+				th:text='${i+1}'>1</span> <a th:if='${i}!=${page.number}'
+				th:href="@{${url}(page=${i},Search=${Search})}"> <span
+					th:text='${i+1}'>1</span>
+			</a></li>
+
+			<li th:if="${page.totalPages >= 5 && page.number <= 1}"
+				th:each='i : ${#numbers.sequence(0, 4)}'
+				th:class="(${i}==${page.number})? 'active' : ''"
+				style="display: inline"><span th:if='${i}==${page.number}'
+				th:text='${i+1}'>1</span> <a th:if='${i}!=${page.number}'
+				th:href="@{${url}(page=${i},Search=${Search})}"> <span
+					th:text='${i+1}'>1</span>
+			</a></li>
+
+			<li
+				th:if="${page.totalPages >= 5 && page.number > 1 && page.number < page.totalPages-2}"
+				th:each='i : ${#numbers.sequence(page.number-2, page.number+2)}'
+				th:class="(${i}==${page.number})? 'active' : ''"
+				style="display: inline"><span th:if='${i}==${page.number}'
+				th:text='${i+1}'>1</span> <a th:if='${i}!=${page.number}'
+				th:href="@{${url}(page=${i},Search=${Search})}"> <span
+					th:text='${i+1}'>1</span>
+			</a></li>
+
+			<li
+				th:if="${page.totalPages >= 5 && page.number >= page.totalPages-2}"
+				th:each='i : ${#numbers.sequence(page.totalPages-5,page.totalPages-1)}'
+				th:class="(${i}==${page.number})? 'active' : ''"
+				style="display: inline"><span th:if='${i}==${page.number}'
+				th:text='${i+1}'>1</span> <a th:if='${i}!=${page.number}'
+				th:href="@{${url}(page=${i},Search=${Search})}"> <span
+					th:text='${i+1}'>1</span>
+			</a></li>
+
+			<li th:class="(${page.number})? 'active' : ''"
+				style="display: inline"><span th:if="${page.last}">&gt</span> <a
+				th:if="${not page.last}"
+				th:href="@{${url}(page=(${page.number}+1),Search=${Search})}">&gt</a></li>
+
+			<li th:class="${page.last} ? 'disabled':''" style="display: inline">
+				<span th:if="${page.last}">&gt&gt</span> <a th:if="${not page.last}"
+				th:href="@{${url}(page=(${page.totalPages}-1),Search=${Search})}">&gt&gt</a>
+			</li>
+		</ul>
+	</div>
 
 <table border="1">
 
@@ -40,19 +111,21 @@
 
 			</tr>
 		</thead>
-		<tbody th:each="user : ${page}" th:object="${user}" >
+		<tbody th:each="ItemCustomerStatusEntity : ${page}" th:object="${ItemCustomerStatusEntity}" >
 			<tr >
-				<td th:text="*{customerId}" rowspan="2"></td>
+				<td th:text="*{customerName}" rowspan="2"></td>
 				<td th:text="*{orderDate}" rowspan="2"></td>
 				<td th:text="*{sNumber}" rowspan="2" nowrap></td>
 				<td th:text="*{title}" rowspan="2"></td>
 				<td th:text="*{quantity}+ *{quantityUnit}" rowspan="2"></td>
 				<td th:text="*{deliveryDate}" align="center"> </td>
+
 				<td th:text="*{billingDate}" rowspan="2"></td>
-				<td th:text="'￥' + *{estimatedAmount}"></td>
-				<td th:text="*{statusId}" rowspan="2"></td>
-				<td style="background: #000066;" rowspan="2"><a th:href="@{/{id}/ItemEdit(id=*{id})}"><button type="submit"  style="border:1px solid #000066;background-color:#000066; height:100%" ><font color="#FFFFFF">編集</font></button></a></td>
-				<td style="background: #000066;" rowspan="2"><a th:href="@{/{id}/ItemDelete(id=*{id})}"><button type="submit"  style="border:1px solid #000066;background-color:#000066; height:100%" ><font color="#FF0000">削除</font></button></a></td>
+  <td th:text="*{estimatedAmount}"></td>
+				<td th:text="*{Name}" rowspan="2"></td>
+				<td nowrap bgcolor="999999" rowspan="2"><a th:href="@{/ItemEdit/{id}/{customerId}/{statusId}(id=*{id},customerId=*{customerId},statusId=*{statusId})}">編集</a></td>
+				<td nowrap bgcolor="999999" rowspan="2"><a th:href="@{/ItemDelete/{id}/{customerId}/{statusId}(id=*{id},customerId=*{customerId},statusId=*{statusId})}">削除</a></td>
+
 			</tr>
 <tr>
 <td th:text="*{dueDate}" align="center"></td>
@@ -63,5 +136,71 @@
 		</tbody>
 
 	</table>
+
+<div th:fragment='paginationbar' th:if="!${#lists.isEmpty(page)}">
+		<ul th:object="${Search}">
+
+
+			<li th:class="${page.first} ? 'disabled':''" style="display: inline">
+				<span th:if="${page.first}">&lt&lt</span> <a
+				th:if="${not page.first}"
+				th:href="@{${url}(page=0,Search=${Search})}">&lt&lt</a>
+			</li>
+
+
+			<li th:class="(${page.number})? 'active' : ''"
+				style="display: inline"><span th:if="${page.first}">&lt</span>
+				<a th:if="${not page.first}"
+				th:href="@{${url}(page=(${page.number}-1),Search=${Search})}">&lt</a></li>
+
+			<li th:if="${page.totalPages <= 4}"
+				th:each='i : ${#numbers.sequence(0, page.totalPages-1)}'
+				th:class="(${i}==${page.number})? 'active' : ''"
+				style="display: inline"><span th:if='${i}==${page.number}'
+				th:text='${i+1}'>1</span> <a th:if='${i}!=${page.number}'
+				th:href="@{${url}(page=${i},Search=${Search})}"> <span
+					th:text='${i+1}'>1</span>
+			</a></li>
+
+			<li th:if="${page.totalPages >= 5 && page.number <= 1}"
+				th:each='i : ${#numbers.sequence(0, 4)}'
+				th:class="(${i}==${page.number})? 'active' : ''"
+				style="display: inline"><span th:if='${i}==${page.number}'
+				th:text='${i+1}'>1</span> <a th:if='${i}!=${page.number}'
+				th:href="@{${url}(page=${i},Search=${Search})}"> <span
+					th:text='${i+1}'>1</span>
+			</a></li>
+
+			<li
+				th:if="${page.totalPages >= 5 && page.number > 1 && page.number < page.totalPages-2}"
+				th:each='i : ${#numbers.sequence(page.number-2, page.number+2)}'
+				th:class="(${i}==${page.number})? 'active' : ''"
+				style="display: inline"><span th:if='${i}==${page.number}'
+				th:text='${i+1}'>1</span> <a th:if='${i}!=${page.number}'
+				th:href="@{${url}(page=${i},Search=${Search})}"> <span
+					th:text='${i+1}'>1</span>
+			</a></li>
+
+			<li
+				th:if="${page.totalPages >= 5 && page.number >= page.totalPages-2}"
+				th:each='i : ${#numbers.sequence(page.totalPages-5,page.totalPages-1)}'
+				th:class="(${i}==${page.number})? 'active' : ''"
+				style="display: inline"><span th:if='${i}==${page.number}'
+				th:text='${i+1}'>1</span> <a th:if='${i}!=${page.number}'
+				th:href="@{${url}(page=${i},Search=${Search})}"> <span
+					th:text='${i+1}'>1</span>
+			</a></li>
+
+			<li th:class="(${page.number})? 'active' : ''"
+				style="display: inline"><span th:if="${page.last}">&gt</span> <a
+				th:if="${not page.last}"
+				th:href="@{${url}(page=(${page.number}+1),Search=${Search})}">&gt</a></li>
+
+			<li th:class="${page.last} ? 'disabled':''" style="display: inline">
+				<span th:if="${page.last}">&gt&gt</span> <a th:if="${not page.last}"
+				th:href="@{${url}(page=(${page.totalPages}-1),Search=${Search})}">&gt&gt</a>
+			</li>
+		</ul>
+	</div>
 </body>
 </html>

@@ -14,7 +14,7 @@
 		<table>
 			<tr>
 				<td align="right">顧客：</td>
-				<td th:text="*{customerId}"></td>
+				<td  th:object="${customerInformationEntity}" th:text="*{customerName}"></td>
 			</tr>
 			<tr>
 				<td align="right">受注日：</td>
@@ -54,7 +54,7 @@
 			</tr>
 			<tr>
 				<td align="right">ステータス：</td>
-				<td th:text="*{statusId}"></td>
+				<td th:object="${statusEntity}" th:text="*{name}"></td>
 			</tr>
 			<tr>
 				<td align="right">備考：</td>

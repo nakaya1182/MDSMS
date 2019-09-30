@@ -10,11 +10,12 @@
 		<b style="position: relative; left: 50px; top: 5px">製造部売上管理システム：案件編集</b>
 
 		<br> <br>
-		<form th:action="@{/{id}/ItemEditConfirmation(id=*{id})}"
+		<form th:action="@{/ItemEditConfirmation}"
 			th:object="${itemEntity}" th:method="post">
+			<input type="hidden" name="id" th:value="*{id}" />
 			<div>
 				<label style="position: relative; left: 48px;">顧客：</label>
-				<label style="position: relative; left: 48px;" th:text="*{customerId}" ></label>
+				<label style="position: relative; left: 48px;" th:object="${customerInformationEntity}" th:text="*{customerName}" ></label>
 				<input type="hidden" name="customerId" th:value="*{customerId}" />
 			</div>
 			<div>
@@ -56,7 +57,9 @@
 			</div>
 			<div>
 				<label style="position: relative; left: 0px;">ステータス：</label>
-				<input style="position: relative; left: 0px;" type="text" name="statusId" th:value="*{statusId}" />
+				<select name="statusId" >
+					<option th:each="user:${statusEntity}" th:object="${user}" th:value="*{id}"><span th:text="*{name}" ></span></option>
+				</select>
 			</div>
 			<div>
 				<label style="position: relative; left: 48px;">備考：</label>
