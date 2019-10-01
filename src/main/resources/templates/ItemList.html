@@ -28,7 +28,6 @@
 			<input type="submit" value="新規登録"  />
 	</form>
 
-
 				<!-----------------検索----------------->
 	<form th:action="@{/search}" th:method="Get" accept-charset="UTF-8" style="position: absolute; right: 10px; top:90px;">
 		<select name="customerId">
@@ -136,10 +135,10 @@
 				<td th:text="*{quantity}+ *{quantityUnit}" rowspan="2"></td>
 				<td th:text="*{deliveryDate}" align="center"> </td>
 				<td th:text="*{billingDate}" rowspan="2"></td>
-				<td th:text="'￥' +*{estimatedAmount}"></td>
+				<td th:text="'￥' + *{estimatedAmount}"></td>
 				<td th:text="*{Name}" rowspan="2"></td>
-				<td nowrap bgcolor="999999" rowspan="2"><a th:href="@{/ItemEdit/{id}/{customerId}/{statusId}(id=*{id},customerId=*{customerId},statusId=*{statusId})}">編集</a></td>
-				<td nowrap bgcolor="999999" rowspan="2"><a th:href="@{/ItemDelete/{id}/{customerId}/{statusId}(id=*{id},customerId=*{customerId},statusId=*{statusId})}">削除</a></td>
+				<td style="background: #000066;" rowspan="2"><a th:href="@{/ItemEdit/{id}/{customerId}/{statusId}(id=*{id},customerId=*{customerId},statusId=*{statusId})}"><button type="submit"  style="border:1px solid #000066;background-color:#000066; height:100%" ><font color="#FFFFFF">編集</font></button></a></td>
+				<td style="background: #000066;" rowspan="2"><a th:href="@{/ItemDelete/{id}/{customerId}/{statusId}(id=*{id},customerId=*{customerId},statusId=*{statusId})}"><button type="submit"  style="border:1px solid #000066;background-color:#000066; height:100%" ><font color="#FF0000">削除</font></button></a></td>
 
 			</tr>
 <tr>

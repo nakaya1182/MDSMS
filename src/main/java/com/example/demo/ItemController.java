@@ -38,6 +38,7 @@ public class ItemController {
 		model.addAttribute("StatusPullDownList", StatusPullDownList);
 		model.addAttribute("page", itemList);
 		model.addAttribute("pullDownList", pullDownList);
+		model.addAttribute("StatusPullDownList", StatusPullDownList);
 		return "ItemList";
 	}
 	/**

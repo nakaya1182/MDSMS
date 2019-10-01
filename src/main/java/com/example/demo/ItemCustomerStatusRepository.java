@@ -33,4 +33,5 @@ public interface ItemCustomerStatusRepository extends PagingAndSortingRepository
 	Page<ItemCustomerStatusEntity> search(Pageable pageable,@Param("Search")String Search);
 
 
+
 }

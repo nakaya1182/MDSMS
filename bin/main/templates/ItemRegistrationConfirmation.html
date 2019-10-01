@@ -65,7 +65,7 @@
 
 	</div>
 	<br>
-	<form th:action="@{/ItemList}" th:object="${itemEntity}" th:method="post">
+	<form th:action="@{/ItemList}" th:object="${itemEntity}" th:method="post" style="position: absolute; top: 420px;">
 		<input type=hidden name="id">
 		<input type=hidden name="customerId" th:value="${customerId}">
 		<input type=hidden name="orderDate" th:value="*{orderDate}">
@@ -85,7 +85,7 @@
 		<input type="submit" style="width: 100px" value="登録" class="btn">
 	</form>
 
-	<form th:action="@{/ItemRegistration}" method="post">
+	<form th:action="@{/ItemRegistration}" method="post" style="position: absolute; left: 120px; top: 420px;">
 		<input type="hidden" th:value="${customerId}" name="customerId"/>
 		<button type="submit">戻る</button>
 	</form>
