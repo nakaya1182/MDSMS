@@ -36,9 +36,9 @@ public class ItemController {
 		Page<ItemCustomerStatusEntity> itemList = itemService.findAll(pageable);
 		List<CustomerInformationEntity> pullDownList=customerInformationService.findAll();
 		List<StatusCustomerEntity> StatusPullDownList=statusService.findAll();
-		model.addAttribute("StatusPullDownList", StatusPullDownList);
 		model.addAttribute("page", itemList);
 		model.addAttribute("pullDownList", pullDownList);
+		model.addAttribute("StatusPullDownList", StatusPullDownList);
 		return "ItemList";
 	}
 	/**

@@ -56,5 +56,6 @@ public class ItemService {
 		return statusCustomerRepository.findByCustmerId(customerId);
 	}
 
+
 }
 

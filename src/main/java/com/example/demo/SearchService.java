@@ -1,4 +1,3 @@
-
 package com.example.demo;
 
 import javax.transaction.Transactional;
@@ -28,3 +27,4 @@ public class SearchService {
 		}
 
 }
+
