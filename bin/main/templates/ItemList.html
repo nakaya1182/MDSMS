@@ -17,7 +17,11 @@
 		<a th:href="@{/UserList}"><button type="submit"  style="border:1px solid #000000;background-color:#000000; height:50px" ><font color="#FFFFFF">ユーザ一覧</font></button></a>
 		<a th:href="@{/logout}" style="float:right;"><button type="submit"  style="border:1px solid #000000;background-color:#000000; height:50px" ><font color="#FF0000">ログアウト</font></button></a>
 	</div>
-
+<script type="text/javascript">
+    $(document).ready(function() {
+         $('.org-tooltip').tooltipster({});
+    });
+</script>
 	<b>製造部売上管理システム：案件一覧</b>
 <br>
 <br>
@@ -27,6 +31,7 @@
 		</select>
 			<input type="submit" value="新規登録"  />
 	</form>
+
 
 	<div th:fragment='paginationbar' th:if="!${#lists.isEmpty(page)}">
 		<ul th:object="${Search}">
@@ -116,7 +121,7 @@
 				<td th:text="*{customerName}" rowspan="2"></td>
 				<td th:text="*{orderDate}" rowspan="2"></td>
 				<td th:text="*{sNumber}" rowspan="2" nowrap></td>
-				<td th:text="*{title}" rowspan="2"></td>
+				<td th:text="*{title}" th:title="*{title}" rowspan="2"><h1 class="org-tooltip" title="*{title}"></h1></td>
 				<td th:text="*{quantity}+ *{quantityUnit}" rowspan="2"></td>
 				<td th:text="*{deliveryDate}" align="center"> </td>
 
@@ -208,6 +213,5 @@
 		</select>
 			<input type="submit" value="新規登録"  />
 	</form>
-
 </body>
 </html>
