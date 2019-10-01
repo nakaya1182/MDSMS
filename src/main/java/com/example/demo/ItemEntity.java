@@ -51,10 +51,10 @@ public class ItemEntity {
 	private String billingDate;
 
 	@Column(name="estimated_amount")
-	private String estimatedAmount;
+	private Integer estimatedAmount;
 
 	@Column(name="order_amount")
-	private String orderAmount;
+	private Integer orderAmount;
 
 	@Column(name="status_id")
 	private Integer statusId;
