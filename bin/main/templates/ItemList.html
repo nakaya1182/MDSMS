@@ -29,6 +29,20 @@
 	</form>
 
 
+				<!-----------------検索----------------->
+	<form action="search" method="get" accept-charset="UTF-8" style="position: absolute; right: 10px; top:90px;">
+		<select name="customerName">
+			<option value="">顧客</option>
+			<option th:each="user:${pullDownList}" th:object="${user}"
+				th:value="*{id}"><span th:text="*{customerName}"></span></option>
+		</select><br> <select name="name" id="status">
+			<option value="">ステータス</option>
+			<option th:each="user:${StatusPullDownList}" th:object="${user}"
+				th:value="*{id}"><span th:text="*{name}"></span></option>
+		</select> <input type="text" id="title" name="title" size="20"><br>
+		<input type="submit" value="検索">
+	</form>
+
 	<div th:fragment='paginationbar' th:if="!${#lists.isEmpty(page)}">
 		<ul th:object="${Search}">
 

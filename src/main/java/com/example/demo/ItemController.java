@@ -38,6 +38,20 @@ public class ItemController {
 		return "ItemList";
 	}
 	/**
+	 * 検索フォーム
+	 */
+	@GetMapping("/search")
+	public String Search(Model model, @PageableDefault(page = 0, value = 10 )Pageable pageable,String title,String customerName,String name) {
+		Page<ItemCustomerStatusEntity> page = searchService.search(pageable,title,customerName,name);
+		List<CustomerInformationEntity> pullDownList=customerInformationService.findAll();
+		List<StatusCustomerEntity> StatusPullDownList=statusService.findAll();
+		model.addAttribute("pullDownList", pullDownList);
+		model.addAttribute("StatusPullDownList", StatusPullDownList);
+		model.addAttribute("page", page);
+		model.addAttribute("Search", title);
+		return "ItemList";
+	}
+	/**
 	 * 案件新規登録
 	 */
 	@PostMapping(value = "/ItemRegistration")
