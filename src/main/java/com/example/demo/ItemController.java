@@ -26,6 +26,8 @@ public class ItemController {
 	CustomerInformationService customerInformationService;
 	@Autowired
 	StatusService statusService;
+	//@Autowired
+	//SearchService searchService;
 	/**
 	 * 一覧表示を表示
 	 */
@@ -33,10 +35,22 @@ public class ItemController {
 	public String itemList(Model model, @PageableDefault(page = 0, value = 10)Pageable pageable) {
 		Page<ItemCustomerStatusEntity> itemList = itemService.findAll(pageable);
 		List<CustomerInformationEntity> pullDownList=customerInformationService.findAll();
+		List<StatusCustomerEntity> StatusPullDownList=statusService.findAll();
 		model.addAttribute("page", itemList);
 		model.addAttribute("pullDownList", pullDownList);
+		model.addAttribute("StatusPullDownList", StatusPullDownList);
 		return "ItemList";
 	}
+	/**
+	 * 検索フォーム
+	 */
+	/**@GetMapping("/search")
+	public String Search(Model model, @PageableDefault(page = 0, value = 10 )Pageable pageable,String title,String customerName,String name) {
+		Page<ItemCustomerStatusEntity> page = searchService.search(pageable,title,customerName,name);
+		model.addAttribute("page", page);
+		model.addAttribute("Search", title);
+		return "ItemList";
+	}*/
 	/**
 	 * 案件新規登録
 	 */
@@ -96,6 +110,8 @@ public class ItemController {
 	public String editConfirmation(@Validated ItemEntity itemEntity, Model model,Integer id,Integer customerId,Integer statusId) {
 		CustomerInformationEntity customerInformationEntity=itemService.findByCustomerId(customerId);
 		StatusEntity statusEntity = itemService.findByStatusId(statusId);
+		Timestamp nowTime = new Timestamp(System.currentTimeMillis());
+		model.addAttribute("nowTime", nowTime);
 		model.addAttribute("customerInformationEntity", customerInformationEntity);
 		model.addAttribute("statusEntity", statusEntity);
 		model.addAttribute("itemEntity", itemEntity);
@@ -121,7 +137,8 @@ public class ItemController {
 	public String delete(@PathVariable Integer id,@PathVariable Integer customerId,@PathVariable Integer statusId, Model model) {
 		CustomerInformationEntity customerInformationEntity=itemService.findByCustomerId(customerId);
 		StatusEntity statusEntity = itemService.findByStatusId(statusId);
-		ItemEntity itemEntity = itemService.findById(id);
+		ItemEntity itemEntity = itemService.findById(id);Timestamp nowTime = new Timestamp(System.currentTimeMillis());
+		model.addAttribute("nowTime", nowTime);
 		model.addAttribute("customerInformationEntity", customerInformationEntity);
 		model.addAttribute("statusEntity", statusEntity);
 

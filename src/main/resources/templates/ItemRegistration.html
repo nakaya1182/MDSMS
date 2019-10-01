@@ -18,7 +18,7 @@
 			  th:object="${customerInformationEntity}" th:text="*{customerName}" style="text-align: Center; position: relative; right: -55px;">
 			</label><br>
 			<label style="position: relative; right: -32px;">受注日：</label>
-			<input style="position: relative; right: -32px;" type="text" id="orderDate" name="orderDate" size="30"><br>
+			<input style="position: relative; right: -32px;" type="text" id="orderDate" name="orderDate" size="30" pattern="\d{4}/\d{2}/\d{2}" title="形式(yyyy/mm/dd)で入力してください。"><br>
 			<label style="position: relative; right: -37px;">S番号：</label>
 			<input style="position: relative; right: -37px;" type="text" id="sNumber" name="sNumber" size="30"><br>
 			<label style="position: relative; right: -48px;">件名：</label>
@@ -27,11 +27,11 @@
 			<input style="position: relative; right: -48px;" type="text" id="quantity" name="quantity" size="12">
 			<input style="position: relative; right: -48px;" type="text" id="quantityUnit" name="quantityUnit" size="12"><br>
 			<label style="position: relative; right:0px;">納入指定日：</label>
-			<input style="position: relative; right:0px;" type="text" id="deliveryDate" name="deliveryDate" size="30"><br>
+			<input style="position: relative; right:0px;" type="text" id="deliveryDate" name="deliveryDate" size="30"  pattern="\d{4}/\d{2}/\d{2}" title="形式(yyyy/mm/dd)で入力してください。"><br>
 			<label style="position: relative; right: -32px;">納入日：</label>
-			<input style="position: relative; right: -32px;" type="text" id="dueDate" name="dueDate" size="30"><br>
+			<input style="position: relative; right: -32px;" type="text" id="dueDate" name="dueDate" size="30" pattern="\d{4}/\d{2}/\d{2}" title="形式(yyyy/mm/dd)で入力してください。"><br>
 			<label style="position: relative; right: -32px;">請求日：</label>
-			<input style="position: relative; right: -32px;" type="text" id="billingDate" name="billingDate" size="30"><br>
+			<input style="position: relative; right: -32px;" type="text" id="billingDate" name="billingDate" size="30" pattern="\d{4}/\d{2}/\d{2}" title="形式(yyyy/mm/dd)で入力してください。"><br>
 			<label style="position: relative; right: -16px;">見積金額：</label>
 			<input style="position: relative; right: -16px;" type="text" id="estimatedAmount" name="estimatedAmount" size="30"><br>
 			<label style="position: relative; right: -16px;">受注金額：</label>

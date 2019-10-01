@@ -83,8 +83,8 @@
 		<input type=hidden name="createdAt" th:value="*{createdAt}">
 		<input type=hidden name="updatedAt" th:value="${nowTime}">
 		<input type="submit" style="width: 100px" value="編集" class="btn">
-
+		<a th:href="@{/ItemEdit/{id}/{customerId}/{statusId}(id=${id},customerId=${customerId},statusId=${statusId})}"><input type="button" value="もどる"></a>
 	</form>
-	<a th:href="@{/ItemEdit/{id}/{customerId}/{statusId}(id=${id},customerId=${customerId},statusId=${statusId})}"><input type="button" value="もどる"></a>
+
 </body>
 </html>

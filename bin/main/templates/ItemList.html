@@ -28,6 +28,20 @@
 			<input type="submit" value="新規登録"  />
 	</form>
 
+			<!-----------------検索----------------->
+	<form action="search" method="get" accept-charset="UTF-8" style="position: absolute; right: 10px; top:90px;">
+		<select name="customerName">
+			<option value="">顧客</option>
+			<option th:each="user:${pullDownList}" th:object="${user}"
+				th:value="*{id}"><span th:text="*{customerName}"></span></option>
+		</select><br> <select name="name" id="status">
+			<option value="">ステータス</option>
+			<option th:each="user:${StatusPullDownList}" th:object="${user}"
+				th:value="*{id}"><span th:text="*{name}"></span></option>
+		</select> <input type="text" id="title" name="title" size="20"><br>
+		<input type="submit" value="検索" name="Search">
+	</form>
+
 	<div th:fragment='paginationbar' th:if="!${#lists.isEmpty(page)}">
 		<ul th:object="${Search}">
 
@@ -119,12 +133,11 @@
 				<td th:text="*{title}" rowspan="2"></td>
 				<td th:text="*{quantity}+ *{quantityUnit}" rowspan="2"></td>
 				<td th:text="*{deliveryDate}" align="center"> </td>
-
 				<td th:text="*{billingDate}" rowspan="2"></td>
-  <td th:text="*{estimatedAmount}"></td>
+				<td th:text="'￥' + *{estimatedAmount}"></td>
 				<td th:text="*{Name}" rowspan="2"></td>
-				<td nowrap bgcolor="999999" rowspan="2"><a th:href="@{/ItemEdit/{id}/{customerId}/{statusId}(id=*{id},customerId=*{customerId},statusId=*{statusId})}">編集</a></td>
-				<td nowrap bgcolor="999999" rowspan="2"><a th:href="@{/ItemDelete/{id}/{customerId}/{statusId}(id=*{id},customerId=*{customerId},statusId=*{statusId})}">削除</a></td>
+				<td style="background: #000066;" rowspan="2"><a th:href="@{/ItemEdit/{id}/{customerId}/{statusId}(id=*{id},customerId=*{customerId},statusId=*{statusId})}"><button type="submit"  style="border:1px solid #000066;background-color:#000066; height:100%" ><font color="#FFFFFF">編集</font></button></a></td>
+				<td style="background: #000066;" rowspan="2"><a th:href="@{/ItemDelete/{id}/{customerId}/{statusId}(id=*{id},customerId=*{customerId},statusId=*{statusId})}"><button type="submit"  style="border:1px solid #000066;background-color:#000066; height:100%" ><font color="#FF0000">削除</font></button></a></td>
 
 			</tr>
 <tr>
