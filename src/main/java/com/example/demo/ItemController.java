@@ -26,6 +26,8 @@ public class ItemController {
 	CustomerInformationService customerInformationService;
 	@Autowired
 	StatusService statusService;
+	@Autowired
+	SearchService searchService;
 	/**
 	 * 一覧表示を表示
 	 */
@@ -33,6 +35,8 @@ public class ItemController {
 	public String itemList(Model model, @PageableDefault(page = 0, value = 10)Pageable pageable) {
 		Page<ItemCustomerStatusEntity> itemList = itemService.findAll(pageable);
 		List<CustomerInformationEntity> pullDownList=customerInformationService.findAll();
+		List<StatusCustomerEntity> StatusPullDownList=statusService.findAll();
+		model.addAttribute("StatusPullDownList", StatusPullDownList);
 		model.addAttribute("page", itemList);
 		model.addAttribute("pullDownList", pullDownList);
 		return "ItemList";
