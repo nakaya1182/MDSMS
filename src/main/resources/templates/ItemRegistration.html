@@ -37,7 +37,7 @@
 			<input style="position: relative; right: -16px;" type="text" id="orderAmount" name="orderAmount" size="30" maxlength='9'><br>
 			<label style="position: relative; right: 0px;">ステータス：</label>
 			<select name="statusId" >
-				<option th:each="user:${statusCustomerEntity}" th:object="${user}" th:value="*{id}"><span th:text="*{name}" ></span></option>
+			<option th:each="user:${statusCustomerEntity}" th:object="${user}" th:value="*{id}"><span th:text="*{name}" ></span></option>
 			</select><br>
 			<label style="text-align: Center; position: relative; right: -48px;"maxlength='1024'>備考：</label>
 			<textarea name="note" style="position: absolute; left: 109px; top: 360px" cols="40" rows="6" ></textarea><br><br>
