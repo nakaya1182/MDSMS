@@ -11,5 +11,5 @@ public interface ItemCustomerStatusRepository extends PagingAndSortingRepository
 			nativeQuery=true)
 	Page<ItemCustomerStatusEntity> findAll(Pageable pageable);
 
-
+	//Page<ItemCustomerStatusEntity> findByAddressContaining(Pageable pageable,String customerName);
 }

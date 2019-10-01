@@ -39,7 +39,7 @@
 			<option th:each="user:${StatusPullDownList}" th:object="${user}"
 				th:value="*{id}"><span th:text="*{name}"></span></option>
 		</select> <input type="text" id="title" name="title" size="20"><br>
-		<input type="submit" value="検索" name="Search">
+		<input type="submit" value="検索">
 	</form>
 
 	<div th:fragment='paginationbar' th:if="!${#lists.isEmpty(page)}">

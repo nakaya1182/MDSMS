@@ -1,4 +1,4 @@
-/**package com.example.demo;
+package com.example.demo;
 
 import javax.transaction.Transactional;
 
@@ -13,17 +13,17 @@ import org.springframework.stereotype.Service;
 public class SearchService {
 
 	@Autowired
-	private SearchRepository searchRepository;
+	private ItemCustomerStatusRepository itemCustomerStatusRepository;
 
 	//検索処理
 		public Page<ItemCustomerStatusEntity> search(Pageable pageable,String title,String customerName,String name) {
-			Page<ItemCustomerStatusEntity> page;
+			Page<ItemCustomerStatusEntity> page = null;
 			if ("".equals(customerName) ){
-				page = searchRepository.findAll(pageable);
-			}else {
-				page = searchRepository.findByAddressContaining(pageable,title,customerName,name);
-			}
+				page = itemCustomerStatusRepository.findAll(pageable);
+			}//else {
+				//page = itemCustomerStatusRepository.findByAddressContaining(pageable,title,customerName,name);
+			//}
 			return page;
 		}
 
-}*/
+}
