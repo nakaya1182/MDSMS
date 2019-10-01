@@ -64,4 +64,8 @@ public class StatusService {
 	public StatusEntity findByStatusId(Integer statusId) {
 		return statusRepository.findById(statusId);
 	}
+
+	public List<StatusEntity> findAllstatus() {
+		return statusRepository.findAll();
+	}
 }

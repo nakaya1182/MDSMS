@@ -26,8 +26,7 @@ public class ItemController {
 	CustomerInformationService customerInformationService;
 	@Autowired
 	StatusService statusService;
-	@Autowired
-	SearchService searchService;
+
 	/**
 	 * 一覧表示を表示
 	 */
@@ -35,7 +34,7 @@ public class ItemController {
 	public String itemList(Model model, @PageableDefault(page = 0, value = 10)Pageable pageable) {
 		Page<ItemCustomerStatusEntity> itemList = itemService.findAll(pageable);
 		List<CustomerInformationEntity> pullDownList=customerInformationService.findAll();
-		List<StatusCustomerEntity> StatusPullDownList=statusService.findAll();
+		List<StatusEntity> StatusPullDownList=statusService.findAllstatus();
 		model.addAttribute("StatusPullDownList", StatusPullDownList);
 		model.addAttribute("page", itemList);
 		model.addAttribute("pullDownList", pullDownList);
@@ -45,14 +44,17 @@ public class ItemController {
 	 * 検索フォーム
 	 */
 	@GetMapping("/search")
-	public String Search(Model model, @PageableDefault(page = 0, value = 10 )Pageable pageable,String title,String customerName,String name) {
-		Page<ItemCustomerStatusEntity> page = searchService.search(pageable,title,customerName,name);
+	public String Search(Model model, @PageableDefault(page = 0, value = 10 )Pageable pageable, String Search, Integer customerId, Integer statusId) {
+		Page<ItemCustomerStatusEntity> page = itemService.search(pageable,Search,customerId,statusId);
 		List<CustomerInformationEntity> pullDownList=customerInformationService.findAll();
 		List<StatusCustomerEntity> StatusPullDownList=statusService.findAll();
+		System.out.println("a");
 		model.addAttribute("pullDownList", pullDownList);
 		model.addAttribute("StatusPullDownList", StatusPullDownList);
+		model.addAttribute("Search", Search);
+		model.addAttribute("customerId", customerId);
+		model.addAttribute("statusId", statusId);
 		model.addAttribute("page", page);
-		model.addAttribute("Search", title);
 		return "ItemList";
 	}
 	/**

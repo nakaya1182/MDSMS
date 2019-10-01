@@ -30,16 +30,17 @@
 
 
 				<!-----------------検索----------------->
-	<form action="search" method="get" accept-charset="UTF-8" style="position: absolute; right: 10px; top:90px;">
-		<select name="customerName">
+	<form th:action="@{/search}" th:method="Get" accept-charset="UTF-8" style="position: absolute; right: 10px; top:90px;">
+		<select name="customerId">
 			<option value="">顧客</option>
 			<option th:each="user:${pullDownList}" th:object="${user}"
 				th:value="*{id}"><span th:text="*{customerName}"></span></option>
-		</select><br> <select name="name" id="status">
+		</select><br>
+		<select name="statusId">
 			<option value="">ステータス</option>
 			<option th:each="user:${StatusPullDownList}" th:object="${user}"
 				th:value="*{id}"><span th:text="*{name}"></span></option>
-		</select> <input type="text" id="title" name="title" size="20"><br>
+		</select> <input type="text" name="Search" size="20"><br>
 		<input type="submit" value="検索">
 	</form>
 
@@ -50,21 +51,21 @@
 			<li th:class="${page.first} ? 'disabled':''" style="display: inline">
 				<span th:if="${page.first}">&lt&lt</span> <a
 				th:if="${not page.first}"
-				th:href="@{${url}(page=0,Search=${Search})}">&lt&lt</a>
+				th:href="@{${url}(page=0,Search=${Search},customerId=${customerId},statusId=${statusId})}">&lt&lt</a>
 			</li>
 
 
 			<li th:class="(${page.number})? 'active' : ''"
 				style="display: inline"><span th:if="${page.first}">&lt</span>
 				<a th:if="${not page.first}"
-				th:href="@{${url}(page=(${page.number}-1),Search=${Search})}">&lt</a></li>
+				th:href="@{${url}(page=(${page.number}-1),Search=${Search},customerId=${customerId},statusId=${statusId})}">&lt</a></li>
 
 			<li th:if="${page.totalPages <= 4}"
 				th:each='i : ${#numbers.sequence(0, page.totalPages-1)}'
 				th:class="(${i}==${page.number})? 'active' : ''"
 				style="display: inline"><span th:if='${i}==${page.number}'
 				th:text='${i+1}'>1</span> <a th:if='${i}!=${page.number}'
-				th:href="@{${url}(page=${i},Search=${Search})}"> <span
+				th:href="@{${url}(page=${i},Search=${Search},customerId=${customerId},statusId=${statusId})}"> <span
 					th:text='${i+1}'>1</span>
 			</a></li>
 
@@ -73,7 +74,7 @@
 				th:class="(${i}==${page.number})? 'active' : ''"
 				style="display: inline"><span th:if='${i}==${page.number}'
 				th:text='${i+1}'>1</span> <a th:if='${i}!=${page.number}'
-				th:href="@{${url}(page=${i},Search=${Search})}"> <span
+				th:href="@{${url}(page=${i},Search=${Search},customerId=${customerId},statusId=${statusId})}"> <span
 					th:text='${i+1}'>1</span>
 			</a></li>
 
@@ -83,7 +84,7 @@
 				th:class="(${i}==${page.number})? 'active' : ''"
 				style="display: inline"><span th:if='${i}==${page.number}'
 				th:text='${i+1}'>1</span> <a th:if='${i}!=${page.number}'
-				th:href="@{${url}(page=${i},Search=${Search})}"> <span
+				th:href="@{${url}(page=${i},Search=${Search},customerId=${customerId},statusId=${statusId})}"> <span
 					th:text='${i+1}'>1</span>
 			</a></li>
 
@@ -93,18 +94,18 @@
 				th:class="(${i}==${page.number})? 'active' : ''"
 				style="display: inline"><span th:if='${i}==${page.number}'
 				th:text='${i+1}'>1</span> <a th:if='${i}!=${page.number}'
-				th:href="@{${url}(page=${i},Search=${Search})}"> <span
+				th:href="@{${url}(page=${i},Search=${Search},customerId=${customerId},statusId=${statusId})}"> <span
 					th:text='${i+1}'>1</span>
 			</a></li>
 
 			<li th:class="(${page.number})? 'active' : ''"
 				style="display: inline"><span th:if="${page.last}">&gt</span> <a
 				th:if="${not page.last}"
-				th:href="@{${url}(page=(${page.number}+1),Search=${Search})}">&gt</a></li>
+				th:href="@{${url}(page=(${page.number}+1),Search=${Search},customerId=${customerId},statusId=${statusId})}">&gt</a></li>
 
 			<li th:class="${page.last} ? 'disabled':''" style="display: inline">
 				<span th:if="${page.last}">&gt&gt</span> <a th:if="${not page.last}"
-				th:href="@{${url}(page=(${page.totalPages}-1),Search=${Search})}">&gt&gt</a>
+				th:href="@{${url}(page=(${page.totalPages}-1),Search=${Search},customerId=${customerId},statusId=${statusId})}">&gt&gt</a>
 			</li>
 		</ul>
 	</div>
@@ -158,21 +159,21 @@
 			<li th:class="${page.first} ? 'disabled':''" style="display: inline">
 				<span th:if="${page.first}">&lt&lt</span> <a
 				th:if="${not page.first}"
-				th:href="@{${url}(page=0,Search=${Search})}">&lt&lt</a>
+				th:href="@{${url}(page=0,Search=${Search},customerId=${customerId},statusId=${statusId})}">&lt&lt</a>
 			</li>
 
 
 			<li th:class="(${page.number})? 'active' : ''"
 				style="display: inline"><span th:if="${page.first}">&lt</span>
 				<a th:if="${not page.first}"
-				th:href="@{${url}(page=(${page.number}-1),Search=${Search})}">&lt</a></li>
+				th:href="@{${url}(page=(${page.number}-1),Search=${Search},customerId=${customerId},statusId=${statusId})}">&lt</a></li>
 
 			<li th:if="${page.totalPages <= 4}"
 				th:each='i : ${#numbers.sequence(0, page.totalPages-1)}'
 				th:class="(${i}==${page.number})? 'active' : ''"
 				style="display: inline"><span th:if='${i}==${page.number}'
 				th:text='${i+1}'>1</span> <a th:if='${i}!=${page.number}'
-				th:href="@{${url}(page=${i},Search=${Search})}"> <span
+				th:href="@{${url}(page=${i},Search=${Search},customerId=${customerId},statusId=${statusId})}"> <span
 					th:text='${i+1}'>1</span>
 			</a></li>
 
@@ -181,7 +182,7 @@
 				th:class="(${i}==${page.number})? 'active' : ''"
 				style="display: inline"><span th:if='${i}==${page.number}'
 				th:text='${i+1}'>1</span> <a th:if='${i}!=${page.number}'
-				th:href="@{${url}(page=${i},Search=${Search})}"> <span
+				th:href="@{${url}(page=${i},Search=${Search},customerId=${customerId},statusId=${statusId})}"> <span
 					th:text='${i+1}'>1</span>
 			</a></li>
 
@@ -191,7 +192,7 @@
 				th:class="(${i}==${page.number})? 'active' : ''"
 				style="display: inline"><span th:if='${i}==${page.number}'
 				th:text='${i+1}'>1</span> <a th:if='${i}!=${page.number}'
-				th:href="@{${url}(page=${i},Search=${Search})}"> <span
+				th:href="@{${url}(page=${i},Search=${Search},customerId=${customerId},statusId=${statusId})}"> <span
 					th:text='${i+1}'>1</span>
 			</a></li>
 
@@ -201,18 +202,18 @@
 				th:class="(${i}==${page.number})? 'active' : ''"
 				style="display: inline"><span th:if='${i}==${page.number}'
 				th:text='${i+1}'>1</span> <a th:if='${i}!=${page.number}'
-				th:href="@{${url}(page=${i},Search=${Search})}"> <span
+				th:href="@{${url}(page=${i},Search=${Search},customerId=${customerId},statusId=${statusId})}"> <span
 					th:text='${i+1}'>1</span>
 			</a></li>
 
 			<li th:class="(${page.number})? 'active' : ''"
 				style="display: inline"><span th:if="${page.last}">&gt</span> <a
 				th:if="${not page.last}"
-				th:href="@{${url}(page=(${page.number}+1),Search=${Search})}">&gt</a></li>
+				th:href="@{${url}(page=(${page.number}+1),Search=${Search},customerId=${customerId},statusId=${statusId})}">&gt</a></li>
 
 			<li th:class="${page.last} ? 'disabled':''" style="display: inline">
 				<span th:if="${page.last}">&gt&gt</span> <a th:if="${not page.last}"
-				th:href="@{${url}(page=(${page.totalPages}-1),Search=${Search})}">&gt&gt</a>
+				th:href="@{${url}(page=(${page.totalPages}-1),Search=${Search},customerId=${customerId},statusId=${statusId})}">&gt&gt</a>
 			</li>
 		</ul>
 	</div>

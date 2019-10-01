@@ -12,7 +12,7 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface StatusRepository extends PagingAndSortingRepository<StatusEntity, String>{
 	Page<StatusEntity> findAll(Pageable pageable);
-
+	List<StatusEntity> findAll();
 	StatusEntity findById(Integer id);
 
 	List<StatusEntity> findByCustomerId(Integer customerId);
