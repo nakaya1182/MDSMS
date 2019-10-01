@@ -28,7 +28,7 @@
 			<input type="submit" value="新規登録"  />
 	</form>
 
-			<!-----------------検索----------------->
+				<!-----------------検索----------------->
 	<form action="search" method="get" accept-charset="UTF-8" style="position: absolute; right: 10px; top:90px;">
 		<select name="customerName">
 			<option value="">顧客</option>
@@ -130,7 +130,7 @@
 				<td th:text="*{customerName}" rowspan="2"></td>
 				<td th:text="*{orderDate}" rowspan="2"></td>
 				<td th:text="*{sNumber}" rowspan="2" nowrap></td>
-				<td th:text="*{title}" rowspan="2"></td>
+				<td th:text="*{title}" th:title="*{title}" rowspan="2"></td>
 				<td th:text="*{quantity}+ *{quantityUnit}" rowspan="2"></td>
 				<td th:text="*{deliveryDate}" align="center"> </td>
 				<td th:text="*{billingDate}" rowspan="2"></td>
@@ -215,5 +215,11 @@
 			</li>
 		</ul>
 	</div>
+	<form th:action="@{/ItemRegistration}" th:method="Post" th:object="${pullString}" style="display: inline">
+		<select name="customerId" >
+			<option th:each="user:${pullDownList}" th:object="${user}" th:value="*{id}"><span th:text="*{customerName}" ></span></option>
+		</select>
+			<input type="submit" value="新規登録"  />
+	</form>
 </body>
 </html>

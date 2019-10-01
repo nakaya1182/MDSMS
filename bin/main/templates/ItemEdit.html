@@ -20,40 +20,40 @@
 			</div>
 			<div>
 				<label style="position: relative; left: 32px;">受注日：</label>
-				<input style="position: relative; left: 32px;" type="text" name="orderDate" th:value="*{orderDate}" />
+				<input style="position: relative; left: 32px;" type="text" name="orderDate" th:value="*{orderDate}" maxlength='10'/>
 			</div>
 			<div>
 				<label style="position: relative; left: 37px;">S番号：</label>
-				<input style="position: relative; left: 37px;" type="text" name="sNumber" th:value="*{sNumber}" />
+				<input style="position: relative; left: 37px;" type="text" name="sNumber" th:value="*{sNumber}" maxlength='6'/>
 			</div>
 			<div>
 				<label style="position: relative; left: 48px;">件名：</label>
-				<input style="position: relative; left: 48px;" type="text" name="title" th:value="*{title}" />
+				<input style="position: relative; left: 48px;" type="text" name="title" th:value="*{title}" required maxlength='256'/>
 			</div>
 			<div>
 				<label style="position: relative; left: 48px;">数量：</label>
-				<input style="position: relative; left: 48px;" type="text" name="quantity" th:value="*{quantity}" size="6"/>
-				<input style="position: relative; left: 48px;" type="text" name="quantityUnit" th:value="*{quantityUnit}" size="6"/>
+				<input style="position: relative; left: 48px;" type="text" name="quantity" th:value="*{quantity}" size="6" maxlength='9'/>
+				<input style="position: relative; left: 48px;" type="text" name="quantityUnit" th:value="*{quantityUnit}" size="6" maxlength='8'/>
 			</div>
 			<div>
 				<label style="position: relative; left: 0px;">納入指定日：</label>
-				<input style="position: relative; left: 0px;" type="text" name="deliveryDate" th:value="*{deliveryDate}" />
+				<input style="position: relative; left: 0px;" type="text" name="deliveryDate" th:value="*{deliveryDate}" maxlength='10'/>
 			</div>
 			<div>
 				<label style="position: relative; left: 32px;">納入日：</label>
-				<input style="position: relative; left: 32px;" type="text" name="dueDate" th:value="*{dueDate}" />
+				<input style="position: relative; left: 32px;" type="text" name="dueDate" th:value="*{dueDate}" maxlength='10'/>
 			</div>
 			<div>
 				<label style="position: relative; left: 32px;">請求日：</label>
-				<input style="position: relative; left: 32px;" type="text" name="billingDate" th:value="*{billingDate}" />
+				<input style="position: relative; left: 32px;" type="text" name="billingDate" th:value="*{billingDate}" maxlength='10'/>
 			</div>
 			<div>
 				<label style="position: relative; left: 16px;">見積金額：</label>
-				<input style="position: relative; left: 16px;" type="text" name="estimatedAmount" th:value="*{estimatedAmount}" />
+				<input style="position: relative; left: 16px;" type="text" name="estimatedAmount" th:value="*{estimatedAmount}" maxlength='9'/>
 			</div>
 			<div>
 				<label style="position: relative; left: 16px;">受注金額：</label>
-				<input style="position: relative; left: 16px;" type="text" name="orderAmount" th:value="*{orderAmount}" />
+				<input style="position: relative; left: 16px;" type="text" name="orderAmount" th:value="*{orderAmount}" maxlength='9'/>
 			</div>
 			<div>
 				<label style="position: relative; left: 0px;">ステータス：</label>
@@ -63,7 +63,7 @@
 			</div>
 			<div>
 				<label style="position: relative; left: 48px;">備考：</label>
-				<input style="position: relative; left: 48px;" type="text" name="note" th:value="*{note}" />
+				<input style="position: relative; left: 48px;" type="text" name="note" th:value="*{note}" maxlength='1024'/>
 			</div>
 			<div>
 				<input type=hidden name="createdAt" th:value="*{createdAt}">

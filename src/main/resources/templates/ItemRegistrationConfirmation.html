@@ -15,7 +15,7 @@
 		<table>
 			<tr>
 				<td align="right">顧客：</td>
-				<td th:text="*{customerId}"></td>
+				<td th:object="${customerInformationEntity}" th:text="*{customerName}"></td>
 			</tr>
 			<tr>
 				<td align="right">受注日：</td>
@@ -55,7 +55,7 @@
 			</tr>
 			<tr>
 				<td align="right">ステータス：</td>
-				<td th:text="*{statusId}"></td>
+				<td th:object="${statusEntity}" th:text="*{name}"></td>
 			</tr>
 			<tr>
 				<td align="right">備考：</td>
@@ -67,7 +67,7 @@
 	<br>
 	<form th:action="@{/ItemList}" th:object="${itemEntity}" th:method="post">
 		<input type=hidden name="id">
-		<input type=hidden name="customerId" th:value="*{customerId}">
+		<input type=hidden name="customerId" th:value="${customerId}">
 		<input type=hidden name="orderDate" th:value="*{orderDate}">
 		<input type=hidden name="sNumber" th:value="*{sNumber}">
 		<input type=hidden name="title" th:value="*{title}">
@@ -78,12 +78,16 @@
 		<input type=hidden name="billingDate" th:value="*{billingDate}">
 		<input type=hidden name="estimatedAmount" th:value="*{estimatedAmount}">
 		<input type=hidden name="orderAmount" th:value="*{orderAmount}">
-		<input type=hidden name="statusId" th:value="*{statusId}">
+		<input type=hidden name="statusId" th:value="${statusId}">
 		<input type=hidden name="note" th:value="*{note}">
 		<input type=hidden name="createdAt" th:value="${nowTime}">
 		<input type=hidden name="updatedAt" th:value="${nowTime}">
 		<input type="submit" style="width: 100px" value="登録" class="btn">
-		<input type="button" onclick="location.href='/ItemRegistration'" value="もどる">
+	</form>
+
+	<form th:action="@{/ItemRegistration}" method="post">
+		<input type="hidden" th:value="${customerId}" name="customerId"/>
+		<button type="submit">戻る</button>
 	</form>
 </body>
 </html>

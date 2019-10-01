@@ -71,8 +71,15 @@ public class ItemController {
 	 * 新規登録の確認画面
 	 */
 	@RequestMapping(value ="/ItemRegistrationConfirmation", method = RequestMethod.POST)
-	public String itemRegistration(@ModelAttribute @Validated ItemEntity itemEntity, Model model) {
+	public String itemRegistration(ItemEntity itemEntity, Model model,Integer customerId, Integer statusId) {
+		CustomerInformationEntity customerInformationEntity=customerInformationService.findByCustomerId(customerId);
+		StatusEntity statusEntity=statusService.findByStatusId(statusId);
 		Timestamp nowTime = new Timestamp(System.currentTimeMillis());
+		model.addAttribute("itemEntity", itemEntity);
+		model.addAttribute("customerInformationEntity", customerInformationEntity);
+		model.addAttribute("statusEntity", statusEntity);
+		model.addAttribute("customerId", customerId);
+		model.addAttribute("statusId", statusId);
 		model.addAttribute("nowTime", nowTime);
 		return "ItemRegistrationConfirmation";
 	}
@@ -141,7 +148,8 @@ public class ItemController {
 	public String delete(@PathVariable Integer id,@PathVariable Integer customerId,@PathVariable Integer statusId, Model model) {
 		CustomerInformationEntity customerInformationEntity=itemService.findByCustomerId(customerId);
 		StatusEntity statusEntity = itemService.findByStatusId(statusId);
-		ItemEntity itemEntity = itemService.findById(id);Timestamp nowTime = new Timestamp(System.currentTimeMillis());
+		ItemEntity itemEntity = itemService.findById(id);
+		Timestamp nowTime = new Timestamp(System.currentTimeMillis());
 		model.addAttribute("nowTime", nowTime);
 		model.addAttribute("customerInformationEntity", customerInformationEntity);
 		model.addAttribute("statusEntity", statusEntity);
