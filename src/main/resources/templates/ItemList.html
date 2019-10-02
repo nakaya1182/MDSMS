@@ -135,7 +135,7 @@
 				<td th:text="*{customerName}" rowspan="2"></td>
 				<td th:text="*{orderDate}" rowspan="2"></td>
 				<td th:text="*{sNumber}" rowspan="2" nowrap></td>
-				<td th:text="*{title}" th:title="*{title}" rowspan="2"></td>
+				<td th:text="*{title}" th:title="*{title}+ *{note}" rowspan="2"></td>
 				<td th:text="*{quantity}+ *{quantityUnit}" rowspan="2"></td>
 				<td th:text="*{deliveryDate}" align="center"> </td>
 				<td th:text="*{billingDate}" rowspan="2"></td>
