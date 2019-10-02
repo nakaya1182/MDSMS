@@ -23,7 +23,7 @@
 			<label style="position: relative; right: -48px;">件名：</label>
 			<input style="position: relative; right: -48px;" type="text" id="title" name="title" size="30" required maxlength='256'><br>
 			<label style="position: relative; right: -48px;">数量：</label>
-			<input style="position: relative; right: -48px;" type="number" id="quantity" name="quantity" size="12" maxlength='5'>
+			<input style="position: relative; right: -48px;" type="text" id="quantity" name="quantity" size="12" maxlength='5' pattern="[0-9]*" title="数字で入力してください。">
 			<input style="position: relative; right: -48px;" type="text" id="quantityUnit" name="quantityUnit" size="12" maxlength='8'><br>
 			<label style="position: relative; right:0px;">納入指定日：</label>
 			<input style="position: relative; right:0px;" type="text" id="deliveryDate" name="deliveryDate" size="30" maxlength='10'  pattern="\d{4}/\d{2}/\d{2}" title="形式(yyyy/mm/dd)で入力してください。"><br>
