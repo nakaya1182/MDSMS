@@ -23,7 +23,7 @@
 			</tr>
 			<tr>
 				<td align="right">S番号：</td>
-				<td th:text="*{sNumber}"></td>
+				<td th:text="S- +*{sNumber}"></td>
 			</tr>
 			<tr>
 				<td align="right">件名：</td>
@@ -69,7 +69,7 @@
 		<input type=hidden name="id">
 		<input type=hidden name="customerId" th:value="${customerId}">
 		<input type=hidden name="orderDate" th:value="*{orderDate}">
-		<input type=hidden name="sNumber" th:value="*{sNumber}">
+		<input type=hidden name="sNumber" th:value="S- +*{sNumber}">
 		<input type=hidden name="title" th:value="*{title}">
 		<input type=hidden name="quantity" th:value="*{quantity}">
 		<input type=hidden name="quantityUnit" th:value="*{quantityUnit}">

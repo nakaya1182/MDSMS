@@ -5,27 +5,35 @@
 <meta charset="UTF-8">
 <title>ユーザ一覧</title>
 </head>
-<body>
+<body style="width: 950px;">
 
 	<div
 		style="margin-top: -10px; background: #000000; width: 100%; border: 1px solid #D3D3D3; height: 100％; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px;">
-		<font color="#FFFF00">
-		MENU
-		</font>
-		<a th:href="@{/ItemList}"><button type="submit"  style="border:1px solid #000000;background-color:#000000; height:50px" ><font color="#FFFFFF">案件一覧</font></button></a>
-		<a th:href="@{/CustomerInformationList}"><button type="submit"  style="border:1px solid #000000;background-color:#000000; height:50px" ><font color="#FFFFFF">顧客一覧</font></button></a>
-		<a th:href="@{/StatusList}"><button type="submit"  style="border:1px solid #000000;background-color:#000000; height:50px" ><font color="#FFFFFF">ステータス一覧</font></button></a>
-		<font color="#808080" size="2">ユーザ一覧</font>
-		<a th:href="@{/logout}" style="float:right;"><button type="submit"  style="border:1px solid #000000;background-color:#000000; height:50px" ><font color="#FF0000">ログアウト</font></button></a>
+		<font color="#FFFF00"> MENU </font> <a th:href="@{/ItemList}"><button
+				type="submit"
+				style="border: 1px solid #000000; background-color: #000000; height: 50px">
+				<font color="#FFFFFF">案件一覧</font>
+			</button></a> <a th:href="@{/CustomerInformationList}"><button type="submit"
+				style="border: 1px solid #000000; background-color: #000000; height: 50px">
+				<font color="#FFFFFF">顧客一覧</font>
+			</button></a> <a th:href="@{/StatusList}"><button type="submit"
+				style="border: 1px solid #000000; background-color: #000000; height: 50px">
+				<font color="#FFFFFF">ステータス一覧</font>
+			</button></a> <font color="#808080" size="2">ユーザ一覧</font> <a th:href="@{/logout}"
+			style="float: right;"><button type="submit"
+				style="border: 1px solid #000000; background-color: #000000; height: 50px">
+				<font color="#FF0000">ログアウト</font>
+			</button></a>
 	</div>
 
 
 
 	<b>製造部売上管理システム：ユーザ一覧</b>
-<br>
-<br>
-	<input type="button" th:onclick="location.href='/UserRegistration'" value="新規登録">
-<div th:fragment='paginationbar' th:if="!${#lists.isEmpty(page)}">
+	<br>
+	<br>
+	<input type="button" th:onclick="location.href='/UserRegistration'"
+		value="新規登録">
+	<div th:fragment='paginationbar' th:if="!${#lists.isEmpty(page)}">
 		<ul th:object="${Search}">
 
 
@@ -90,7 +98,7 @@
 			</li>
 		</ul>
 	</div>
-	<table border="1">
+	<table border="1" style="width: 950px;">
 		<thead>
 			<tr height=40 bgcolor=cornflowerblue>
 				<th>社員番号</th>
@@ -113,15 +121,25 @@
 				<td th:text="*{mail_address}"></td>
 				<td th:text="*{address}"></td>
 				<td th:text="*{tel}"></td>
-				<td style="background: #000066;"><a th:href="@{/{employee_number}/UserEdit(employee_number=*{employee_number})}"><button type="submit"  style="border:1px solid #000066;background-color:#000066; height:100%" ><font color="#FFFFFF">編集</font></button></a></td>
-				<td style="background: #000066;"><a th:href="@{/{employee_number}/UserDelete(employee_number=*{employee_number})}"><button type="submit"  style="border:1px solid #000066;background-color:#000066; height:100%" ><font color="#FF0000">削除</font></button></a></td>
+				<td style="background: #000066;"><a
+					th:href="@{/{employee_number}/UserEdit(employee_number=*{employee_number})}"><button
+							type="submit"
+							style="border: 1px solid #000066; background-color: #000066; height: 100%">
+							<font color="#FFFFFF">編集</font>
+						</button></a></td>
+				<td style="background: #000066;"><a
+					th:href="@{/{employee_number}/UserDelete(employee_number=*{employee_number})}"><button
+							type="submit"
+							style="border: 1px solid #000066; background-color: #000066; height: 100%">
+							<font color="#FF0000">削除</font>
+						</button></a></td>
 
 			</tr>
 		</tbody>
 
 	</table>
 
-<div th:fragment='paginationbar' th:if="!${#lists.isEmpty(page)}">
+	<div th:fragment='paginationbar' th:if="!${#lists.isEmpty(page)}">
 		<ul th:object="${Search}">
 
 
@@ -186,6 +204,7 @@
 			</li>
 		</ul>
 	</div>
-
+	<input type="button" th:onclick="location.href='/UserRegistration'"
+		value="新規登録">
 </body>
 </html>

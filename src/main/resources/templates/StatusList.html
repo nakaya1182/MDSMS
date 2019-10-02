@@ -4,9 +4,23 @@
 <head>
 <meta name="viewport" charset='utf-8'
 	content="width=device-width,initial-scale=1.0,minimum-scale=1.0">
+<style>
+
+table {
+  table-layout: fixed;
+}
+
+td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 0;
+}
+
+</style>
 <title>ステータス一覧</title>
 </head>
-<body>
+<body style="width: 950px;">
 	<div
 		style="margin-top: -10px; background: #000000; width: 100%; border: 1px solid #D3D3D3; height: 100％; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px;">
 		<font color="#FFFF00">
@@ -43,12 +57,12 @@
 	<table border=1>
 		<thead>
 			<tr  height=40 bgcolor=cornflowerblue>
-				<th width=15% >顧客</th>
+				<th width=20% >顧客</th>
 				<th width=5% >ID</th>
 				<th width=20% >ステータス名称</th>
-				<th width=50% >説明</th>
-				<th width=5% ></th>
-				<th width=5% ></th>
+				<th width=45% >説明</th>
+				<th width=8% ></th>
+				<th width=8% ></th>
 			</tr>
 		</thead>
 		<tbody th:with="x=''">
@@ -56,7 +70,7 @@
 				<td th:text="*{customerName}"></td>
 			    <td th:text="*{id}" ></td>
 			    <td th:text="*{name}"></td>
-			    <td th:text="*{description}"></td>
+			    <td th:text="*{description}" th:title="*{description}"></td>
 			    <td style="background: #000066;"><a th:href="@{/StatusEdit/{id}/{customerId}(id=*{id},customerId=*{customerId})}"><button type="submit"  style="border:1px solid #000066;background-color:#000066; height:100%" ><font color="#FFFFFF">編集</font></button></a></td>
 			    <td style="background: #000066;"><a th:href="@{/StatusDelete/{id}/{customerId}(id=*{id},customerId=*{customerId})}"><button type="submit"  style="border:1px solid #000066;background-color:#000066; height:100%" ><font color="#ff8c00">削除</font></button></a></td>
 		   </tr>
