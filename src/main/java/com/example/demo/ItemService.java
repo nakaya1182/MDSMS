@@ -57,23 +57,14 @@ public class ItemService {
 	}
 	public Page<ItemCustomerStatusEntity> search(Pageable pageable, String Search, Integer customerId, Integer statusId) {
 		Page<ItemCustomerStatusEntity> page = null;
-		System.out.println("aaaaaaaaaaaaaaaaaaa");
 		if(customerId != null && statusId != null){
-			System.out.println("b");
 			page = itemCustomerStatusRepository.searchCS(pageable,Search,customerId,statusId);
-			System.out.println("c");
 		} else if(customerId != null){
-			System.out.println("d");
 			page = itemCustomerStatusRepository.searchC(pageable,Search,customerId);
-			System.out.println("f");
 		} else if(statusId != null) {
-			System.out.println("g");
 			page = itemCustomerStatusRepository.searchS(pageable,Search,statusId);
-			System.out.println("h");
 		}else {
-			System.out.println("j");
 			page = itemCustomerStatusRepository.search(pageable,Search);
-			System.out.println("k");
 		}
 		return  page;
 	}

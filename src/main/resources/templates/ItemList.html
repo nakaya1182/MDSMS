@@ -21,12 +21,16 @@
 	<b>製造部売上管理システム：案件一覧</b>
 <br>
 <br>
-	<form th:action="@{/ItemRegistration}" th:method="Post" th:object="${pullString}" style="display: inline">
-		<select name="customerId" >
-			<option th:each="user:${pullDownList}" th:object="${user}" th:value="*{id}"><span th:text="*{customerName}" ></span></option>
-		</select>
-			<input type="submit" value="新規登録"  />
-	</form>
+	<div th:if="${pullDownList != null}">
+		<form th:action="@{/ItemRegistration}" th:method="Post" th:object="${pullString}" style="display: inline">
+			<select name="customerId" >
+				<option th:each="user:${pullDownList}" th:object="${user}" th:value="*{id}"><span th:text="*{customerName}" ></span></option>
+			</select>
+				<input type="submit" value="新規登録"  />
+		</form>
+	</div>
+
+	<div th:if="${pullDownList == null}" >※顧客情報がありません!<br>新規登録をするには顧客一覧から新規登録を行ってください。</div>
 
 				<!-----------------検索----------------->
 	<form th:action="@{/search}" th:method="Get" accept-charset="UTF-8" style="position: absolute; right: 10px; top:90px;">

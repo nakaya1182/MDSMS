@@ -22,7 +22,7 @@
 	<b>製造部売上管理システム：ステータス一覧</b>
 	<br><br>
 
-	<div style="display:inline-flex">
+	<div style="display:inline-flex" th:if="${pullDownList != null}">
 				&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 		<form th:action="@{/StatusRegistration}" th:method="Post" th:object="${pullString}" style="display: inline">
 			<select name="customerId" >
@@ -39,6 +39,7 @@
 			<br><br><br>
 		</form>
 	</div>
+	<div th:if="${pullDownList == null}" >※顧客情報がありません!<br>新規登録をするには顧客一覧から新規登録を行ってください。</div>
 	<table border=1>
 		<thead>
 			<tr  height=40 bgcolor=cornflowerblue>
