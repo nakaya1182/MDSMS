@@ -3,9 +3,23 @@
 	xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
+<style>
+
+table {
+  table-layout: fixed;
+}
+
+td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 0;
+}
+
+</style>
 <title>案件一覧</title>
 </head>
-<body>
+<body style="width: 950px;">
 	<div
 		style="margin-top: -10px; background: #000000; width: 100%; border: 1px solid #D3D3D3; height: 100％; padding-left: 10px; padding-right: 10px; padding-top: 10px; padding-bottom: 10px;">
 		<font color="#FFFF00">
@@ -29,18 +43,18 @@
 	</form>
 
 				<!-----------------検索----------------->
-	<form th:action="@{/search}" th:method="Get" accept-charset="UTF-8" style="position: absolute; right: 10px; top:90px;">
+	<form th:action="@{/search}" th:method="Get" accept-charset="UTF-8" style="position: relative; left: 620px; top:-30px;">
 		<select name="customerId">
 			<option value="">顧客</option>
 			<option th:each="user:${pullDownList}" th:object="${user}"
 				th:value="*{id}"><span th:text="*{customerName}"></span></option>
-		</select><br>
+		</select>件名：<input type="text" name="Search" size="20"><br>
 		<select name="statusId">
 			<option value="">ステータス</option>
 			<option th:each="user:${StatusPullDownList}" th:object="${user}"
 				th:value="*{id}"><span th:text="*{name}"></span></option>
-		</select> <input type="text" name="Search" size="20"><br>
-		<input type="submit" value="検索">
+		</select> <br>
+		   <input type="submit" value="検索"><br>
 	</form>
 
 	<div th:fragment='paginationbar' th:if="!${#lists.isEmpty(page)}">
@@ -113,16 +127,16 @@
 
 		<thead>
 			<tr height=40 bgcolor=cornflowerblue>
-				<th>顧客</th>
+				<th width=13%>顧客</th>
 				<th>受注日</th>
-				<th>S番号</th>
-				<th>件名</th>
-				<th>数量</th>
-				<th>納入指定日<br>/納入日</th>
+				<th width=7%>S番号</th>
+				<th >件名</th>
+				<th width=4%>数量</th>
+				<th width=13%>納入指定日<br>/納入日</th>
 				<th>請求日</th>
-				<th nowrap>見積金額<br>/受注金額</th>
-				<th>ステータス</th>
-				<th colspan="2"></th>
+				<th nowrap width=11%>見積金額<br>/受注金額</th>
+				<th width=9%>ステータス</th>
+				<th width=10% colspan="2"></th>
 
 			</tr>
 		</thead>

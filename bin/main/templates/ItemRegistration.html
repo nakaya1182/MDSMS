@@ -36,7 +36,7 @@
 			<label style="position: relative; right: -16px;">受注金額：</label>
 			<input style="position: relative; right: -16px;" type="text" id="orderAmount" name="orderAmount" size="30" maxlength='9'><br>
 			<label style="position: relative; right: 0px;">ステータス：</label>
-			<select name="statusId" >
+			<select name="statusId" required title="ステータスを登録してください。">
 			<option th:each="user:${statusCustomerEntity}" th:object="${user}" th:value="*{id}"><span th:text="*{name}" ></span></option>
 			</select><br>
 			<label style="text-align: Center; position: relative; right: -48px;"maxlength='1024'>備考：</label>
