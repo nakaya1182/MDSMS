@@ -234,11 +234,13 @@ td {
 			</li>
 		</ul>
 	</div>
-	<form th:action="@{/ItemRegistration}" th:method="Post" th:object="${pullString}" style="display: inline">
-		<select name="customerId" >
-			<option th:each="user:${pullDownList}" th:object="${user}" th:value="*{id}"><span th:text="*{customerName}" ></span></option>
-		</select>
-			<input type="submit" value="新規登録"  />
-	</form>
+	<div th:if="${pullDownList != null}">
+		<form th:action="@{/ItemRegistration}" th:method="Post" th:object="${pullString}" style="display: inline">
+			<select name="customerId" >
+				<option th:each="user:${pullDownList}" th:object="${user}" th:value="*{id}"><span th:text="*{customerName}" ></span></option>
+			</select>
+				<input type="submit" value="新規登録"  />
+		</form>
+	</div>
 </body>
 </html>
