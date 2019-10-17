@@ -35,10 +35,12 @@ public class ItemController {
 		Page<ItemCustomerStatusEntity> itemList = itemService.findAll(pageable);
 		List<CustomerInformationEntity> pullDownList=customerInformationService.findAll();
 		List<StatusEntity> StatusPullDownList=statusService.findAllstatus();
+		Long customerCountAll = customerInformationService.countAll();
 		model.addAttribute("StatusPullDownList", StatusPullDownList);
 		model.addAttribute("page", itemList);
 		model.addAttribute("pullDownList", pullDownList);
 		model.addAttribute("StatusPullDownList", StatusPullDownList);
+		model.addAttribute("customerCountAll", customerCountAll);
 		return "ItemList";
 	}
 	/**
@@ -73,16 +75,19 @@ public class ItemController {
 	 * 新規登録の確認画面
 	 */
 	@RequestMapping(value ="/ItemRegistrationConfirmation", method = RequestMethod.POST)
-	public String itemRegistration(ItemEntity itemEntity, Model model,Integer customerId, Integer statusId) {
+	public String itemRegistration(ItemEntity itemEntity, Model model,Integer customerId, Integer statusId,String sNumber) {
+		sNumber = itemService.SixDigits(sNumber);
 		CustomerInformationEntity customerInformationEntity=customerInformationService.findByCustomerId(customerId);
 		StatusEntity statusEntity=statusService.findByStatusId(statusId);
 		Timestamp nowTime = new Timestamp(System.currentTimeMillis());
+		
 		model.addAttribute("itemEntity", itemEntity);
 		model.addAttribute("customerInformationEntity", customerInformationEntity);
 		model.addAttribute("statusEntity", statusEntity);
 		model.addAttribute("customerId", customerId);
 		model.addAttribute("statusId", statusId);
 		model.addAttribute("nowTime", nowTime);
+		model.addAttribute("sNumber", sNumber);
 		return "ItemRegistrationConfirmation";
 	}
 	/**
@@ -96,8 +101,9 @@ public class ItemController {
 	/**
 	 * 編集画面
 	}*/
-	@GetMapping("/ItemEdit/{id}/{customerId}/{statusId}")
-	public String edit(@PathVariable Integer id, @PathVariable Integer customerId,@PathVariable Integer statusId,Model model) {
+	@GetMapping("/ItemEdit/{id}/{customerId}/{statusId}/{sNumber}")
+	public String edit(@PathVariable Integer id, @PathVariable Integer customerId,@PathVariable Integer statusId,@PathVariable String sNumber,Model model) {
+		sNumber = sNumber.substring(2);
 		CustomerInformationEntity customerInformationEntity=itemService.findByCustomerId(customerId);
 		//StatusEntity statusEntity = itemService.findByStatusId(statusId);
 		List<StatusCustomerEntity> statusEntity = itemService.findByCustmerId(customerId);
@@ -108,6 +114,7 @@ public class ItemController {
 		model.addAttribute("id", id);
 		model.addAttribute("customerId", customerId);
 		model.addAttribute("statusId", statusId);
+		model.addAttribute("sNumber", sNumber);
 		return "ItemEdit";
 	}/**
 	 * 編集,削除戻るボタン
@@ -120,7 +127,8 @@ public class ItemController {
 	 * 編集の確認画面
 	}*/
 	@RequestMapping(value = "/ItemEditConfirmation" ,method = RequestMethod.POST)
-	public String editConfirmation(@Validated ItemEntity itemEntity, Model model,Integer id,Integer customerId,Integer statusId) {
+	public String editConfirmation(@Validated ItemEntity itemEntity, Model model,Integer id,Integer customerId,Integer statusId,String sNumber) {
+		sNumber = itemService.SixDigits(sNumber);
 		CustomerInformationEntity customerInformationEntity=itemService.findByCustomerId(customerId);
 		StatusEntity statusEntity = itemService.findByStatusId(statusId);
 		Timestamp nowTime = new Timestamp(System.currentTimeMillis());
@@ -131,7 +139,7 @@ public class ItemController {
 		model.addAttribute("id", id);
 		model.addAttribute("customerId", customerId);
 		model.addAttribute("statusId", statusId);
-
+		model.addAttribute("sNumber", sNumber);
 		return "ItemEditConfirmation";
 	}
 	/**

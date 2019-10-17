@@ -19,11 +19,11 @@
 			<label style="position: relative; right: -32px;">受注日：</label>
 			<input style="position: relative; right: -32px;" type="text" id="orderDate" name="orderDate" size="30" maxlength='10' pattern="\d{4}/\d{2}/\d{2}" title="形式(yyyy/mm/dd)で入力してください。"><br>
 			<label style="position: relative; right: -37px;">S番号：</label>
-			<input style="position: relative; right: -37px;" type="text" id="sNumber" name="sNumber" size="30" maxlength='4'><br>
+			<input style="position: relative; right: -37px;" type="text" id="sNumber" name="sNumber" size="30" maxlength='4'  pattern="[0-9]*" title="数字で入力してください。"><br>
 			<label style="position: relative; right: -48px;">件名：</label>
 			<input style="position: relative; right: -48px;" type="text" id="title" name="title" size="30" required maxlength='256'><br>
 			<label style="position: relative; right: -48px;">数量：</label>
-			<input style="position: relative; right: -48px;" type="text" id="quantity" name="quantity" size="12" maxlength='5'>
+			<input style="position: relative; right: -48px;" type="text" id="quantity" name="quantity" size="12" maxlength='5' pattern="[0-9]*" title="数字で入力してください。">
 			<input style="position: relative; right: -48px;" type="text" id="quantityUnit" name="quantityUnit" size="12" maxlength='8'><br>
 			<label style="position: relative; right:0px;">納入指定日：</label>
 			<input style="position: relative; right:0px;" type="text" id="deliveryDate" name="deliveryDate" size="30" maxlength='10'  pattern="\d{4}/\d{2}/\d{2}" title="形式(yyyy/mm/dd)で入力してください。"><br>
@@ -32,9 +32,9 @@
 			<label style="position: relative; right: -32px;">請求日：</label>
 			<input style="position: relative; right: -32px;" type="text" id="billingDate" name="billingDate" size="30" maxlength='10' pattern="\d{4}/\d{2}/\d{2}" title="形式(yyyy/mm/dd)で入力してください。"><br>
 			<label style="position: relative; right: -16px;">見積金額：</label>
-			<input style="position: relative; right: -16px;" type="text" id="estimatedAmount" name="estimatedAmount" size="30" maxlength='9'><br>
+			<input style="position: relative; right: -16px;" type="text" id="estimatedAmount" name="estimatedAmount" size="30" maxlength='9' pattern="[0-9]*" title="数字で入力してください。"><br>
 			<label style="position: relative; right: -16px;">受注金額：</label>
-			<input style="position: relative; right: -16px;" type="text" id="orderAmount" name="orderAmount" size="30" maxlength='9'><br>
+			<input style="position: relative; right: -16px;" type="text" id="orderAmount" name="orderAmount" size="30" maxlength='9' pattern="[0-9]*" title="数字で入力してください。"><br>
 			<label style="position: relative; right: 0px;">ステータス：</label>
 			<select name="statusId" required title="ステータスを選択してください。ステータスがない場合はステータス画面でステータス登録を行ってください。">
 				<option th:each="user:${statusCustomerEntity}" th:object="${user}" th:value="*{id}"><span th:text="*{name}" ></span></option>

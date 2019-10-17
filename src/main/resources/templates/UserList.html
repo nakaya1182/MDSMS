@@ -49,12 +49,14 @@
 				<a th:if="${not page.first}"
 				th:href="@{${url}(page=(${page.number}-1),Search=${Search})}">&lt</a></li>
 
-			<li th:if="${page.totalPages <= 4}"
+			<label th:if="${page.totalPages <= 0}">1</label>
+
+			<li th:if="${page.totalPages <= 4 && page.totalPages > 0}"
 				th:each='i : ${#numbers.sequence(0, page.totalPages-1)}'
 				th:class="(${i}==${page.number})? 'active' : ''"
 				style="display: inline"><span th:if='${i}==${page.number}'
 				th:text='${i+1}'>1</span> <a th:if='${i}!=${page.number}'
-				th:href="@{${url}(page=${i},Search=${Search})}"> <span
+				th:href="@{${url}(page=${i},Search=${Search},customerId=${customerId},statusId=${statusId})}"> <span
 					th:text='${i+1}'>1</span>
 			</a></li>
 
@@ -155,12 +157,14 @@
 				<a th:if="${not page.first}"
 				th:href="@{${url}(page=(${page.number}-1),Search=${Search})}">&lt</a></li>
 
-			<li th:if="${page.totalPages <= 4}"
+			<label th:if="${page.totalPages <= 0}">1</label>
+
+			<li th:if="${page.totalPages <= 4 && page.totalPages > 0}"
 				th:each='i : ${#numbers.sequence(0, page.totalPages-1)}'
 				th:class="(${i}==${page.number})? 'active' : ''"
 				style="display: inline"><span th:if='${i}==${page.number}'
 				th:text='${i+1}'>1</span> <a th:if='${i}!=${page.number}'
-				th:href="@{${url}(page=${i},Search=${Search})}"> <span
+				th:href="@{${url}(page=${i},Search=${Search},customerId=${customerId},statusId=${statusId})}"> <span
 					th:text='${i+1}'>1</span>
 			</a></li>
 
