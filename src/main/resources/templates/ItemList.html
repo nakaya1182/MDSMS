@@ -40,7 +40,7 @@ td {
 			<select name="customerId" >
 				<option th:each="user:${pullDownList}" th:object="${user}" th:value="*{id}"><span th:text="*{customerName}" ></span></option>
 			</select>
-				<input type="submit" value="新規登録"  />
+				<input type="submit" value="新規登録" />
 		</form>
 	</div>
 
@@ -153,7 +153,8 @@ td {
 				<td th:text="*{customerName}" rowspan="2"></td>
 				<td th:text="*{orderDate}" rowspan="2"></td>
 				<td th:text="*{sNumber}" rowspan="2" nowrap></td>
-				<td th:text="*{title}" th:title="*{title}+ *{note}" rowspan="2"></td>
+
+				<td th:text="*{title}" th:title="'[全文]:' +*{title}+'[備考]:'+ *{note}" rowspan="2"></td>
 				<td th:if="*{quantity} != null" th:text="*{quantity}+ *{quantityUnit}" rowspan="2"></td>
 				<td th:if="*{quantity} == null" th:text="0+ *{quantityUnit}" rowspan="2"></td>
 				<td th:text="*{deliveryDate}" align="center"> </td>
