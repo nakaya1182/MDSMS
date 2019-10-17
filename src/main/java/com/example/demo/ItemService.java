@@ -68,6 +68,12 @@ public class ItemService {
 		}
 		return  page;
 	}
+	public String SixDigits(String sNumber) {
+		sNumber = "0000" + sNumber;
+		sNumber = sNumber.substring(sNumber.length()-4);
+		sNumber = "S-" + sNumber;
+		return sNumber;
+	}
 
 
 }

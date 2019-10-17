@@ -31,4 +31,9 @@ public class CustomerInformationService {
 	public CustomerInformationEntity findByCustomerId(Integer customerId) {
 		return customerInformationRepository.findById(customerId);
 	}
+	public Long countAll() {
+		return customerInformationRepository.countByFlag(0);
+	}
+
+
 }

@@ -22,7 +22,7 @@
 			</tr>
 			<tr>
 				<td align="right">S番号：</td>
-				<td th:text="*{sNumber}"></td>
+				<td th:text="${sNumber}"></td>
 			</tr>
 			<tr>
 				<td align="right">件名：</td>
@@ -30,7 +30,8 @@
 			</tr>
 			<tr>
 				<td align="right">数量：</td>
-				<td th:text="*{quantity}+ *{quantityUnit}"></td>
+				<td th:if="*{quantity} != null" th:text="*{quantity}+ *{quantityUnit}" ></td>
+				<td th:if="*{quantity} == null" th:text="0+ *{quantityUnit}"></td>
 			</tr>
 			<tr>
 				<td align="right">納入指定日：</td>
@@ -69,7 +70,7 @@
 		<input type=hidden name="id" th:value="*{id}">
 		<input type=hidden name="customerId" th:value="*{customerId}">
 		<input type=hidden name="orderDate" th:value="*{orderDate}">
-		<input type=hidden name="sNumber" th:value="*{sNumber}">
+		<input type=hidden name="sNumber" th:value="${sNumber}">
 		<input type=hidden name="title" th:value="*{title}">
 		<input type=hidden name="quantity" th:value="*{quantity}">
 		<input type=hidden name="quantityUnit" th:value="*{quantityUnit}">
@@ -83,7 +84,7 @@
 		<input type=hidden name="createdAt" th:value="*{createdAt}">
 		<input type=hidden name="updatedAt" th:value="${nowTime}">
 		<input type="submit" style="width: 100px" value="編集" class="btn">
-		<a th:href="@{/ItemEdit/{id}/{customerId}/{statusId}(id=${id},customerId=${customerId},statusId=${statusId})}"><input type="button" value="もどる"></a>
+		<a th:href="@{/ItemEdit/{id}/{customerId}/{statusId}/{sNumber}(id=*{id},customerId=*{customerId},statusId=*{statusId},sNumber='S-'+*{sNumber})}"><input type="button" value="もどる"></a>
 	</form>
 
 </body>
